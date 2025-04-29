@@ -15,7 +15,7 @@ public abstract class BaseAttack : ScriptableObject
         targetMask = mask;
     }
 
-    public abstract void Attack();
+    public abstract void Attack(); // Use Weapon?
 
     public virtual bool InRange()
     {
