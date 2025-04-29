@@ -21,18 +21,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (lastSpawnTime + spawnTime <= Time.time)
+        if (lastSpawnTime + spawnTime <= Time.time) // can add to spawner utilty
         {
             HandleEnemySpawns();
         }
     }
 
-    void SetSpawnTime()
+    void SetSpawnTime() // can add to spawner utilty
     {
         spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    void HandleEnemySpawns()
+    void HandleEnemySpawns() // can add to spawner utilty
     {
         int numberOfSpawns = Random.Range(1, maxSingleSpawn + 1);
 
