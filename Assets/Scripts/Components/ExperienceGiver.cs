@@ -15,4 +15,9 @@ public class ExperienceGiver : MonoBehaviour
     {
         experienceManager.GainExp(expPoints);
     }
+
+    public void SetExpPoints(float amount)
+    {
+        expPoints = amount;
+    }
 }
