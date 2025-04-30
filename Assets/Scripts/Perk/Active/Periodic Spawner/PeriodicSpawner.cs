@@ -19,6 +19,7 @@ public class PeriodicSpawner : Perk
         base.OnEquip(owner);
         lastSpawnTime = Time.time;
         SetSpawnTime();
+        HasActiveLogic();
     }
 
     public override void OnUpdate(GameObject owner)
