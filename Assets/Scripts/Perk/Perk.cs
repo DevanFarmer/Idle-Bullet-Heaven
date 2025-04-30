@@ -19,18 +19,30 @@ public abstract class Perk : ScriptableObject
     // Pass owner for any logic that might need it
     public virtual void OnEquip(GameObject owner)
     {
+        ApplyStatModifiers();
+    }
+
+    public virtual void OnUpdate(GameObject owner)
+    {
+        // Could make abstract but for few cases might not have update needed so saves having to always override
+    }
+
+    public virtual void OnUnEquip(GameObject owner)
+    {
+        RemoveStatModifiers();
+    }
+
+    // Add self as a listener for events like enemy death, exp gained, hit, healed etc.
+
+    protected void ApplyStatModifiers()
+    {
         foreach (StatModifier modifier in statModifiers)
         {
             StatManager.Instance.ApplyModifier(modifier);
         }
     }
 
-    public virtual void OnUpdate(GameObject owner)
-    {
-        // Could make abstract but for few cases might not have update needed
-    }
-
-    public virtual void OnUnEquip(GameObject owner)
+    protected void RemoveStatModifiers()
     {
         foreach (StatModifier modifier in statModifiers)
         {
@@ -39,8 +51,6 @@ public abstract class Perk : ScriptableObject
             StatManager.Instance.ApplyModifier(newModifier);
         }
     }
-
-    // Add self as a listener for events like enemy death, exp gained, hit, healed etc.
 
     public bool HasActiveLogic()
     {
