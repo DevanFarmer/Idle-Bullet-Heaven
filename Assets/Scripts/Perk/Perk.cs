@@ -12,6 +12,7 @@ public abstract class Perk : ScriptableObject
     public string formattedDescription;
     public string effectDescription;
 
+    // All weapons now inherit this?
     [Header("Passive Info")]
     public List<StatModifier> statModifiers = new List<StatModifier>();
     protected bool hasActiveLogic = true;

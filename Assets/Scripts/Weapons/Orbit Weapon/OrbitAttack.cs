@@ -1,0 +1,58 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OrbitAttack : Weapon
+{
+    [Header("Orbiting")]
+    public int numberOfSpawns;
+    public int numberOfOrbits;
+    public float orbitSpeed;
+    [Tooltip("Used for the radius of the attack.")]
+    public new float range;
+
+    [Header("Optional Behaviour")]
+    public bool spawnAtCenterThenMoveOut;
+    public bool returnToCenterAfterOrbitComplete;
+    public float moveSpeed;
+
+    float lastAttackTime;
+
+    public override void OnEquip(GameObject owner)
+    {
+        lastAttackTime = Time.time;
+    }
+
+    public override void OnUpdate(GameObject owner)
+    {
+        if (lastAttackTime + attackSpeed <= Time.time)
+        {
+            Attack(owner);
+            lastAttackTime = Time.time;
+        }
+    }
+
+    public override void OnUnEquip(GameObject owner)
+    {
+        
+    }
+
+    void Attack(GameObject owner)
+    {
+        for (int i = 0; i < numberOfSpawns; i++)
+        {
+            float angle = i * Mathf.PI * 2f / numberOfSpawns;
+            Vector3 targetOffset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * range;
+            Vector3 spawnPos = spawnAtCenterThenMoveOut ? owner.transform.position : owner.transform.position + targetOffset;
+
+            GameObject weapon = Instantiate(weaponPrefab, spawnPos, Quaternion.identity, owner.transform);
+
+            // set damage
+
+            // Set orbit component
+            OrbitComponent orbitComponent = weapon.GetComponent<OrbitComponent>();
+            if (orbitComponent == null) orbitComponent = weapon.AddComponent<OrbitComponent>();
+
+            orbitComponent.InitializeComponent(owner.transform, orbitSpeed, numberOfOrbits, range, moveSpeed, spawnAtCenterThenMoveOut, returnToCenterAfterOrbitComplete);
+        }
+    }
+}

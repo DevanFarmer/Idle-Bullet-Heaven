@@ -1,5 +1,10 @@
+using UnityEngine;
+
 public abstract class Weapon : Perk
 {
-    public float AttackPower; // Remove the attack prefix?
-    public float AttackSpeed;
+    public GameObject weaponPrefab;
+
+    public float power;
+    public float attackSpeed; // Cooldown
+    public float range;
 }
