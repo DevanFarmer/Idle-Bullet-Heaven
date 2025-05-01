@@ -28,7 +28,7 @@ public class StatModifierOnEnemyDeath : Perk
         EventBus.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
         if (onPlayerHit)
         {
-            EventBus.Subscribe<PlayerHitEvent>(OnPlayerHit);
+            EventBus.Subscribe<PlayerDamagedEvent>(OnPlayerHit);
             subscribedToPlayerHit = true;
         }
     }
@@ -38,7 +38,7 @@ public class StatModifierOnEnemyDeath : Perk
         EventBus.Unsubscribe<EnemyDeathEvent>(OnEnemyDeath);
         if (subscribedToPlayerHit)
         {
-            EventBus.Unsubscribe<PlayerHitEvent>(OnPlayerHit);
+            EventBus.Unsubscribe<PlayerDamagedEvent>(OnPlayerHit);
             subscribedToPlayerHit = false;
         }
     }
@@ -53,7 +53,7 @@ public class StatModifierOnEnemyDeath : Perk
         totalDeaths = 0;
     }
 
-    void OnPlayerHit(PlayerHitEvent _event)
+    void OnPlayerHit(PlayerDamagedEvent _event)
     {
         for (int i = 0; i <= totalIncreases; i++)
         {
