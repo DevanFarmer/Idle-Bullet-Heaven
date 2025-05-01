@@ -24,11 +24,11 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] float totalExperience;
     [SerializeField] float nextLevelUp;
 
-    StatManager statManager;
+    StatManager playerStatManager;
 
     private void Start()
     {
-        statManager = StatManager.Instance;
+        playerStatManager = GameManager.Instance.GetPlayerStatManager();
     }
 
     public void GainExp(float exp)
@@ -43,7 +43,7 @@ public class ExperienceManager : MonoBehaviour
     void LevelUp()
     {
         // Call StatManager LevelUp
-        statManager.LevelUp();
+        playerStatManager.LevelUp();
 
         // Set nextLevelUp amount
     }

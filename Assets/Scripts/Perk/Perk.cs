@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Perk : ScriptableObject
@@ -16,10 +17,14 @@ public abstract class Perk : ScriptableObject
     [Header("Passive Info")]
     public List<StatModifier> statModifiers = new List<StatModifier>();
     protected bool hasActiveLogic = true;
+    
+    protected StatManager statManager;
 
     // Pass owner for any logic that might need it
     public virtual void OnEquip(GameObject owner)
     {
+        statManager = owner.GetComponent<StatManager>(); // Can have an initializer method that always runs but cannot be overridden
+
         ApplyStatModifiers();
     }
 
@@ -39,7 +44,7 @@ public abstract class Perk : ScriptableObject
     {
         foreach (StatModifier modifier in statModifiers)
         {
-            StatManager.Instance.ApplyModifier(modifier);
+            ApplyModifier(modifier);
         }
     }
 
@@ -49,8 +54,13 @@ public abstract class Perk : ScriptableObject
         {
             StatModifier newModifier = modifier;
             newModifier.value *= -1;
-            StatManager.Instance.ApplyModifier(newModifier);
+            ApplyModifier(newModifier);
         }
+    }
+
+    void ApplyModifier(StatModifier modifier)
+    {
+        statManager.ApplyModifier(modifier);
     }
 
     public bool HasActiveLogic()

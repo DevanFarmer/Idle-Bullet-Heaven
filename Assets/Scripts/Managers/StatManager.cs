@@ -2,25 +2,6 @@ using UnityEngine;
 
 public class StatManager : MonoBehaviour
 {
-    #region Singleton
-    private static StatManager instance = null;
-
-    public static StatManager Instance { get { return instance; } }
-
-    private void Awake()
-    {
-        if (instance)
-        {
-            DestroyImmediate(gameObject);
-            return;
-        }
-
-        instance = this;
-
-        DontDestroyOnLoad(gameObject);
-    }
-    #endregion
-
     #region Stats
     #region Structs
     struct Stats
