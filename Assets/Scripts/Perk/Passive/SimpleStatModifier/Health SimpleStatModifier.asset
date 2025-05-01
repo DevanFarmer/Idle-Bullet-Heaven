@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perkName: Health/Attack Power Modification
   description: Increases health by {0}% and decreases AttackPower by {1}
+  formattedDescription: Increases health by 15% and decreases AttackPower by -2
   effectDescription: '<color=green>+15</color>% Health
 
     <color=red>-2</color>
     AttackPower'
-  formattedDescription: Increases health by 15% and decreases AttackPower by -2
   statModifiers:
   - targetStat: 0
     value: 15
