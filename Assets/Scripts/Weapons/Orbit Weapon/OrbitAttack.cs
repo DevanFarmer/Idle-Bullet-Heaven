@@ -15,8 +15,6 @@ public class OrbitAttack : Weapon
     public bool returnToCenterAfterOrbitComplete;
     public float moveSpeed;
 
-    float lastAttackTime;
-
     public override void OnEquip(GameObject owner)
     {
         lastAttackTime = Time.time;
