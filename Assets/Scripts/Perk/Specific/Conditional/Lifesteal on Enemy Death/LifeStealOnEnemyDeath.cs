@@ -27,16 +27,16 @@ public class LifeStealOnEnemyDeath : Perk
 
     void LifeSteal(EnemyHitEvent e)
     {
-        if (valueType == PassiveValueType.Flat)
-        {
-            health.Heal(lifeStealPower);
-            return;
-        }
+        float healAmount = lifeStealPower;
 
         HealthComponent enemyHealth = e.Enemy.GetComponent<HealthComponent>();
-
         float enemyMaxHealth = enemyHealth.GetMaxHealth();
 
-        health.Heal(enemyMaxHealth * (lifeStealPower / 100f));
+        if (valueType == PassiveValueType.Percentage)
+        {
+            healAmount = enemyMaxHealth * (lifeStealPower / 100f);
+        }
+
+        health.Heal(healAmount);
     }
 }
