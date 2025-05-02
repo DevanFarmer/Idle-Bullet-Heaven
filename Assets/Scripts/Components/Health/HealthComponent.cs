@@ -45,8 +45,7 @@ public class HealthComponent : MonoBehaviour
         if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
-    public float GetMaxHealth()
-    {
-        return maxHealth;
-    }
+    public float GetMaxHealth() { return maxHealth; }
+
+    public float GetCurrentHealth() { return currentHealth; }
 }
