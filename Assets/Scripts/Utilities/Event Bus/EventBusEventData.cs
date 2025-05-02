@@ -14,6 +14,18 @@ namespace EventBusEventData
         }
     }
 
+    public readonly struct EnemyDeathEvent
+    {
+        public readonly GameObject Enemy;
+        public readonly float Damage;
+
+        public EnemyDeathEvent(GameObject enemy, float damage)
+        {
+            Enemy = enemy;
+            Damage = damage;
+        }
+    }
+
     public readonly struct PlayerDamagedEvent
     {
         public readonly float Damage;
