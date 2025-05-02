@@ -4,7 +4,7 @@ using UnityEngine;
 public class LifestealOnAttack : Perk
 {
     public float lifeStealPower;
-    [Tooltip("Flat = raw heal, Percentage = enemy max health * (life steal power / 100).")]
+    [Tooltip("Flat = raw heal, Percentage = damage dealt * (life steal power / 100).")]
     public PassiveValueType valueType;
 
     HealthComponent health;
@@ -30,12 +30,11 @@ public class LifestealOnAttack : Perk
     {
         float healAmount = lifeStealPower;
 
-        HealthComponent enemyHealth = e.Enemy.GetComponent<HealthComponent>();
-        float enemyMaxHealth = enemyHealth.GetMaxHealth();
+        float damageDealt = e.Damage;
 
         if (valueType == PassiveValueType.Percentage)
         {
-            healAmount = enemyMaxHealth * (lifeStealPower / 100f);
+            healAmount = damageDealt * (lifeStealPower / 100f);
         }
 
         health.Heal(healAmount);

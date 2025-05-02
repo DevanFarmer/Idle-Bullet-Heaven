@@ -15,17 +15,17 @@ public class LifeStealOnEnemyDeath : Perk
 
         health = owner.GetComponent<HealthComponent>(); // check if has, throw error if not
 
-        EventBus.Subscribe<PlayerHitEvent>(LifeSteal);
+        EventBus.Subscribe<EnemyHitEvent>(LifeSteal);
     }
 
     public override void OnUnEquip(GameObject owner)
     {
         base.OnUnEquip(owner);
 
-        EventBus.Unsubscribe<PlayerHitEvent>(LifeSteal);
+        EventBus.Unsubscribe<EnemyHitEvent>(LifeSteal);
     }
 
-    void LifeSteal(PlayerHitEvent e)
+    void LifeSteal(EnemyHitEvent e)
     {
         if (valueType == PassiveValueType.Flat)
         {

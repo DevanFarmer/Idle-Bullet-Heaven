@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace EventBusEventData
 {
-    public readonly struct PlayerHitEvent
+    public readonly struct EnemyHitEvent
     {
         public readonly GameObject Enemy;
         public readonly float Damage;
 
-        public PlayerHitEvent(GameObject enemy, float damage)
+        public EnemyHitEvent(GameObject enemy, float damage)
         {
             Enemy = enemy;
             Damage = damage;
