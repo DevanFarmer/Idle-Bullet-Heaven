@@ -14,6 +14,7 @@ public abstract class Perk : ScriptableObject
     public string effectDescription;
 
     // All weapons now inherit this?
+    // Rather Create a Passive child that has this, if weapon needs just special case for it then
     [Header("Passive Info")]
     public List<StatModifier> statModifiers = new List<StatModifier>();
     protected bool hasActiveLogic = true;
