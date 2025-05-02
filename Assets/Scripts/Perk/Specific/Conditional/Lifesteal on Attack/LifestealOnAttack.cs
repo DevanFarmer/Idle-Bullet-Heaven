@@ -1,7 +1,7 @@
 using EventBusEventData;
 using UnityEngine;
 
-public class LifeStealOnEnemyDeath : Perk
+public class LifestealOnAttack : Perk
 {
     public float lifeStealPower;
     [Tooltip("Flat = raw heal, Percentage = enemy max health * (life steal power / 100).")]
@@ -16,6 +16,7 @@ public class LifeStealOnEnemyDeath : Perk
         health = owner.GetComponent<HealthComponent>(); // check if has, throw error if not
 
         EventBus.Subscribe<PlayerHitEvent>(LifeSteal);
+        // Add Summon hit event too
     }
 
     public override void OnUnEquip(GameObject owner)
@@ -27,16 +28,16 @@ public class LifeStealOnEnemyDeath : Perk
 
     void LifeSteal(PlayerHitEvent e)
     {
-        if (valueType == PassiveValueType.Flat)
-        {
-            health.Heal(lifeStealPower);
-            return;
-        }
+        float healAmount = lifeStealPower;
 
         HealthComponent enemyHealth = e.Enemy.GetComponent<HealthComponent>();
-
         float enemyMaxHealth = enemyHealth.GetMaxHealth();
 
-        health.Heal(enemyMaxHealth * (lifeStealPower / 100f));
+        if (valueType == PassiveValueType.Percentage)
+        {
+            healAmount = enemyMaxHealth * (lifeStealPower / 100f);
+        }
+
+        health.Heal(healAmount);
     }
 }

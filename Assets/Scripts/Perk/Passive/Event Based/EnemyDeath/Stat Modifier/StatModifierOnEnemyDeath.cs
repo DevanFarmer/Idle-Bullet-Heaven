@@ -25,7 +25,7 @@ public class StatModifierOnEnemyDeath : Perk
         totalIncreases = 0;
         totalDeaths = 0;
 
-        EventBus.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
+        EventBus.Subscribe<PlayerHitEvent>(OnEnemyDeath);
         if (onPlayerHit)
         {
             EventBus.Subscribe<PlayerDamagedEvent>(OnPlayerHit);
@@ -35,7 +35,7 @@ public class StatModifierOnEnemyDeath : Perk
 
     public override void OnUnEquip(GameObject owner)
     {
-        EventBus.Unsubscribe<EnemyDeathEvent>(OnEnemyDeath);
+        EventBus.Unsubscribe<PlayerHitEvent>(OnEnemyDeath);
         if (subscribedToPlayerHit)
         {
             EventBus.Unsubscribe<PlayerDamagedEvent>(OnPlayerHit);
@@ -43,7 +43,7 @@ public class StatModifierOnEnemyDeath : Perk
         }
     }
 
-    void OnEnemyDeath(EnemyDeathEvent _event)
+    void OnEnemyDeath(PlayerHitEvent _event)
     {
         if (totalIncreases > maxIncreases) return;
         if (totalDeaths < increaseDeathRequirement) return;
