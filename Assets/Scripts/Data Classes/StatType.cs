@@ -2,5 +2,6 @@ public enum StatType
 {
     Health,
     AttackPower,
-    AttackSpeed
+    AttackSpeed,
+    InvincibilityHits
 }
