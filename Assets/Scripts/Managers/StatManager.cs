@@ -11,7 +11,8 @@ public class StatManager : MonoBehaviour
         public float AttackPower;
         public float AttackSpeed;
 
-        public int invincibilityHits;
+        public int InvincibilityHits; // how is health component going to be updated with new amount?
+        // maybe has an effects class or something that handles things like these
         // Add as needed
     }
 
@@ -62,6 +63,8 @@ public class StatManager : MonoBehaviour
                 return CalculateStat(baseStats.AttackPower, flatBonusStats.AttackPower, percentageBonusStats.AttackPower);
             case StatType.AttackSpeed:
                 return CalculateStat(baseStats.AttackSpeed, flatBonusStats.AttackSpeed, percentageBonusStats.AttackSpeed);
+            case StatType.InvincibilityHits:
+                return baseStats.InvincibilityHits;
         }
 
         Debug.Log("StatType was not found for CalculatedStat");
