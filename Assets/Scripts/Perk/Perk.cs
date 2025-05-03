@@ -41,20 +41,30 @@ public abstract class Perk : ScriptableObject
 
     // Add self as a listener for events like enemy death, exp gained, hit, healed etc.
 
-    protected void ApplyStatModifiers()
+    /// <summary>
+    /// Adds stat modifications to stat manager.
+    /// </summary>
+    /// <param name="modifier">Used for perks that want to modify the stats value by a multiple.</param>
+    protected void ApplyStatModifiers(float modifier = 1)
     {
-        foreach (StatModifier modifier in statModifiers)
+        foreach (StatModifier statModifier in statModifiers)
         {
-            ApplyModifier(modifier);
+            ApplyModifier(new StatModifier(statModifier.targetStat, 
+                                           statModifier.value * modifier,
+                                           statModifier.bonusType));
         }
     }
 
-    protected void RemoveStatModifiers()
+    /// <summary>
+    /// Removes stat modifications done by the perk.
+    /// </summary>
+    /// <param name="modifier">Used for perks that want to modify the stats value by a multiple.</param>
+    protected void RemoveStatModifiers(float modifier = 1)
     {
-        foreach (StatModifier modifier in statModifiers)
+        foreach (StatModifier statModifier in statModifiers)
         {
-            StatModifier newModifier = modifier;
-            newModifier.value *= -1;
+            StatModifier newModifier = statModifier;
+            newModifier.value *= -1 * modifier;
             ApplyModifier(newModifier);
         }
     }
