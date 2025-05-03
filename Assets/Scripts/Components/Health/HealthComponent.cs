@@ -20,9 +20,9 @@ public class HealthComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public bool TakeDamage(float damage)
+    public bool TakeDamage(float damage, bool hit = true)
     {
-        if (HandleInvincibilityHits()) return false;
+        if (HandleInvincibilityHits() && hit) return false;
 
         currentHealth -= damage;
 
