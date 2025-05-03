@@ -26,7 +26,7 @@ public class PeriodicSpawner : Perk
 
     public override void OnUpdate(GameObject owner)
     {
-        if (lastSpawnTime + spawnTime <= Time.time) // can add to spawner utilty
+        if (lastSpawnTime + spawnTime <= Time.time) // can add to spawner utilty, pass an action as an argument
         {
             HandleSpawns(owner.transform.position);
             SetSpawnTime();
