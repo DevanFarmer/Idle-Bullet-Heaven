@@ -4,11 +4,14 @@ public class StatManager : MonoBehaviour
 {
     #region Stats
     #region Structs
+    // if i want to separate stats so each character only has the stats they use then would needa use classes instead
     struct Stats
     {
         public float Health;
         public float AttackPower;
         public float AttackSpeed;
+
+        public int invincibilityHits;
         // Add as needed
     }
 
