@@ -12,7 +12,9 @@ public class StatManager : MonoBehaviour
         public float AttackSpeed;
 
         public int InvincibilityHits; // how is health component going to be updated with new amount?
-        // maybe has an effects class or something that handles things like these
+                                      // maybe has an effects class or something that handles things like these
+
+        public float MinionAttackSpeed;
         // Add as needed
     }
 
@@ -50,6 +52,9 @@ public class StatManager : MonoBehaviour
                 break;
             case StatType.InvincibilityHits:
                 stats.InvincibilityHits += (int)value;
+                break;
+            case StatType.MinionAttackSpeed:
+                stats.MinionAttackSpeed += value;
                 break;
         }
     }
