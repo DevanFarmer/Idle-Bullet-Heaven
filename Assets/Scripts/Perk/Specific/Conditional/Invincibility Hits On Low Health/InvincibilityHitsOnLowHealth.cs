@@ -43,6 +43,7 @@ public class InvincibilityHitsOnLowHealth : Perk
             return;
         }
 
+        // need to use constructor since need to do the calculation here
         statManager.ApplyModifier(
             new StatModifier(StatType.InvincibilityHits,
             statManager.GetCalculatedStat(StatType.InvincibilityHits) - invinciblityHits, // dont add more than woudl give
