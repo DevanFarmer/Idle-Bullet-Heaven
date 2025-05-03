@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-
+    [Header("Health")]
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
+
+    [Header("Invincibility")]
+    [SerializeField] int invincibilityHits;
 
     public Action onDeath;
 
@@ -19,6 +22,8 @@ public class HealthComponent : MonoBehaviour
 
     public bool TakeDamage(float damage)
     {
+        if (HandleInvincibilityHits()) return false;
+
         currentHealth -= damage;
 
         if (currentHealth < 0)
@@ -42,7 +47,19 @@ public class HealthComponent : MonoBehaviour
         
         currentHealth += amount;
 
-        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        if (currentHealth > maxHealth) 
+            currentHealth = maxHealth;
+    }
+
+    bool HandleInvincibilityHits()
+    {
+        if (invincibilityHits > 0)
+        {
+            invincibilityHits--;
+            return true;
+        }
+
+        return false;
     }
 
     public float GetMaxHealth() { return maxHealth; }
