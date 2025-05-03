@@ -48,6 +48,9 @@ public class StatManager : MonoBehaviour
             case StatType.AttackSpeed:
                 stats.AttackSpeed += value;
                 break;
+            case StatType.InvincibilityHits:
+                stats.InvincibilityHits += (int)value;
+                break;
         }
     }
     #endregion
