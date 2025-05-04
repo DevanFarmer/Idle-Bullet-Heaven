@@ -14,6 +14,8 @@ public class HealthComponent : MonoBehaviour
     [Header("Character Type")]
     [SerializeField] CharacterType characterType;
 
+    StatManager statManager;
+
     public Action onDeath;
 
     bool isDead;
@@ -21,6 +23,17 @@ public class HealthComponent : MonoBehaviour
     void Start()
     {
         isDead = false;
+
+        statManager = GetComponent<StatManager>(); // check if null
+        UpdateMaxHealth();
+
+        switch (characterType) 
+        {
+            case CharacterType.Player:
+                EventBus.Subscribe<PlayerStatModifiedEvent>(OnStatModified);
+                break;
+        }
+
         currentHealth = maxHealth;
     }
 
@@ -30,7 +43,7 @@ public class HealthComponent : MonoBehaviour
 
         currentHealth -= damage;
 
-        HandleHitEvents(damage);
+        HandleCharacterHitEvents(damage);
 
         if (currentHealth < 0)
         {
@@ -68,11 +81,22 @@ public class HealthComponent : MonoBehaviour
         return false;
     }
 
+    void OnStatModified(PlayerStatModifiedEvent e)
+    {
+        if (e.statType != StatType.Health) return;
+        UpdateMaxHealth();
+    }
+
+    void UpdateMaxHealth()
+    {
+        maxHealth = statManager.GetCalculatedStat(StatType.Health);
+    }
+
     public float GetMaxHealth() { return maxHealth; }
 
     public float GetCurrentHealth() { return currentHealth; }
 
-    void HandleHitEvents(float damage)
+    void HandleCharacterHitEvents(float damage)
     {
         switch (characterType)
         {
