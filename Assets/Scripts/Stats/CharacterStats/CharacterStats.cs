@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New CharacterStats", menuName = "Stats/Character")]
 public class CharacterStats : ScriptableObject
 {
     public float Health;
