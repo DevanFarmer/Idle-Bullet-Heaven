@@ -21,11 +21,18 @@ public class MinionsManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] bool minionsDecay;
+    [SerializeField] public bool minionsDecay { get; private set; }
+    private float resetDecayTimer;
+
 
     private void Awake()
     {
         HandleSingleton();
+    }
+
+    private void Update()
+    {
+        HandleResetMinionDecayTimer();
     }
 
     public bool GetMinionsDecay()
@@ -33,8 +40,27 @@ public class MinionsManager : MonoBehaviour
         return minionsDecay;
     }
 
-    public void SetMinionsDecay(bool minionsDecay)
+    // when a perk actives, it sends the time. If the time is higher it gets set else "ignored"
+    public void PauseMinionsDecay(float time)
     {
-        this.minionsDecay = minionsDecay;
+        if (resetDecayTimer < time)
+        {
+            resetDecayTimer = time;
+            minionsDecay = false;
+        }
+    }
+
+    void HandleResetMinionDecayTimer()
+    {
+        while (resetDecayTimer > 0f)
+        {
+            resetDecayTimer -= Time.deltaTime;
+
+            if (resetDecayTimer <= 0)
+            {
+                resetDecayTimer = 0f;
+                minionsDecay = true;
+            }
+        }
     }
 }
