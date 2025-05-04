@@ -6,7 +6,7 @@ public class StatManager : MonoBehaviour
     
     // remeber to do null checks!
 
-    private void Start()
+    private void Awake()
     {
         SetBaseStats();
     }
