@@ -49,6 +49,18 @@ namespace EventBusEventData
         }
     }
 
+    public readonly struct PlayerStatModifiedEvent
+    {
+        public readonly StatType statType;
+        public readonly float value;
+
+        public PlayerStatModifiedEvent(StatType statType, float value)
+        {
+            this.statType = statType;
+            this.value = value;
+        }
+    }
+
     public readonly struct PlayerHealEvent
     {
         public readonly float HealAmount;
