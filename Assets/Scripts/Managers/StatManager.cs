@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class StatManager : MonoBehaviour
 {
+    // Make this a base class or make stat managers composite components
+    
+    // remeber to do null checks!
+
+    private void Start()
+    {
+        SetBaseStats();
+    }
+
     #region Stats
     #region Structs
     // if i want to separate stats so each character only has the stats they use then would needa use classes instead
@@ -21,6 +30,19 @@ public class StatManager : MonoBehaviour
     Stats baseStats = new Stats();
     Stats flatBonusStats = new Stats();
     Stats percentageBonusStats = new Stats();
+    #endregion
+
+    #region Setting Base Stats
+    [SerializeField] CharacterStats characterStats;
+
+    void SetBaseStats()
+    {
+        baseStats.Health = characterStats.Health;
+        baseStats.AttackPower = characterStats.AttackPower;
+        baseStats.AttackSpeed = characterStats.AttackSpeed;
+
+        baseStats.InvincibilityHits = characterStats.InvincibilityHits;
+    }
     #endregion
 
     #region Stat Modifying
