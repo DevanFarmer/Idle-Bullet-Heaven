@@ -103,7 +103,12 @@ public class StatManager : MonoBehaviour
 
     float CalculateStat(float baseStat, float flat, float percentage)
     {
-        return (baseStat + flat) * percentage;
+        float statValue = baseStat + flat;
+
+        // if percentage 0 just return base + flat to stop it from setting stat to 0,
+        if (percentage == 0) return statValue;
+        // if percentage is negative, while subtract from base + flat
+        return statValue + (statValue * percentage);
     }
 
     // GetBase, GetFlat, GetPercentage
