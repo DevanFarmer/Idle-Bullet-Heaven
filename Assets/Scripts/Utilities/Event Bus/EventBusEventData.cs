@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace EventBusEventData
 {
+    #region Enemy Events
     public readonly struct EnemyHitEvent
     {
         public readonly GameObject Enemy;
@@ -25,7 +26,9 @@ namespace EventBusEventData
             Damage = damage;
         }
     }
+    #endregion
 
+    #region Player Events
     public readonly struct PlayerDamagedEvent
     {
         public readonly float Damage;
@@ -79,4 +82,39 @@ namespace EventBusEventData
     }
 
     public readonly struct ReviveEvent { }
+    #endregion
+
+    #region Minion Events
+    public readonly struct MinionSummonEvent
+    {
+        public readonly GameObject Minion;
+
+        public MinionSummonEvent(GameObject minion)
+        {
+            Minion = minion;
+        }
+    }
+
+    public readonly struct MinionHitEvent
+    {
+        public readonly float Damage;
+
+        public MinionHitEvent(float damage)
+        {
+            Damage = damage;
+        }
+    }
+
+    public readonly struct MinionDeathEvent
+    {
+        public readonly GameObject Minion;
+        public readonly float Damage;
+
+        public MinionDeathEvent(GameObject minion, float damage)
+        {
+            Minion = minion;
+            Damage = damage;
+        }
+    }
+    #endregion
 }

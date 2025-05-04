@@ -1,3 +1,4 @@
+using EventBusEventData;
 using System;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class HealthComponent : MonoBehaviour
 
     [Header("Invincibility")]
     [SerializeField] int invincibilityHits;
+
+    [Header("Character Type")]
+    [SerializeField] CharacterType characterType;
 
     public Action onDeath;
 
@@ -25,6 +29,8 @@ public class HealthComponent : MonoBehaviour
         if (HandleInvincibilityHits() && hit) return false;
 
         currentHealth -= damage;
+
+        HandleHitEvents(damage);
 
         if (currentHealth < 0)
         {
@@ -65,4 +71,20 @@ public class HealthComponent : MonoBehaviour
     public float GetMaxHealth() { return maxHealth; }
 
     public float GetCurrentHealth() { return currentHealth; }
+
+    void HandleHitEvents(float damage)
+    {
+        switch (characterType)
+        {
+            case CharacterType.Player:
+                EventBus.Publish(new PlayerHitEvent(damage));
+                break;
+            case CharacterType.Minion:
+                EventBus.Publish(new MinionHitEvent(damage));
+                break;
+            case CharacterType.Enemy:
+                EventBus.Publish(new EnemyHitEvent(gameObject, damage));
+                break;
+        }
+    }
 }
