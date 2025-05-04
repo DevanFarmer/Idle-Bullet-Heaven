@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2a04192a3e77b4bb6634097de97cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 11400000, guid: 31120732f91ac7f4e877bd8fe2cfd5a8, type: 2}
 --- !u!114 &1506899567647498539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +191,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  invincibilityHits: 0
+  characterType: 0
