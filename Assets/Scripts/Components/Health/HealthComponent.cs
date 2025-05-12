@@ -30,7 +30,16 @@ public class HealthComponent : MonoBehaviour
         switch (characterType) 
         {
             case CharacterType.Player:
-                EventBus.Subscribe<PlayerStatModifiedEvent>(OnStatModified);
+                EventBus.Subscribe<PlayerStatModifiedEvent>(OnPlayerStatModified);
+                onDeath += () => { EventBus.Publish(new PlayerDeathEvent()); };
+                break;
+            case CharacterType.Enemy:
+                EventBus.Subscribe<EnemyStatModifiedEvent>(OnEnemyStatModified);
+                onDeath += () => { EventBus.Publish(new EnemyDeathEvent()); };
+                break;
+            case CharacterType.Minion:
+                EventBus.Subscribe<MinionStatModifiedEvent>(OnMinionStatModified);
+                onDeath += () => { EventBus.Publish(new MinionStatModifiedEvent()); };
                 break;
         }
 
@@ -81,7 +90,19 @@ public class HealthComponent : MonoBehaviour
         return false;
     }
 
-    void OnStatModified(PlayerStatModifiedEvent e)
+    void OnPlayerStatModified(PlayerStatModifiedEvent e)
+    {
+        if (e.statType != StatType.Health) return;
+        UpdateMaxHealth();
+    }
+
+    void OnEnemyStatModified(EnemyStatModifiedEvent e)
+    {
+        if (e.statType != StatType.Health) return;
+        UpdateMaxHealth();
+    }
+
+    void OnMinionStatModified(MinionStatModifiedEvent e)
     {
         if (e.statType != StatType.Health) return;
         UpdateMaxHealth();

@@ -26,6 +26,18 @@ namespace EventBusEventData
             Damage = damage;
         }
     }
+
+    public readonly struct EnemyStatModifiedEvent
+    {
+        public readonly StatType statType;
+        public readonly float value;
+
+        public EnemyStatModifiedEvent(StatType statType, float value)
+        {
+            this.statType = statType;
+            this.value = value;
+        }
+    }
     #endregion
 
     #region Player Events
@@ -48,6 +60,8 @@ namespace EventBusEventData
             Damage = damage;
         }
     }
+
+    public readonly struct PlayerDeathEvent { }
 
     public readonly struct PlayerStatModifiedEvent
     {
@@ -126,6 +140,18 @@ namespace EventBusEventData
         {
             Minion = minion;
             Damage = damage;
+        }
+    }
+
+    public readonly struct MinionStatModifiedEvent
+    {
+        public readonly StatType statType;
+        public readonly float value;
+
+        public MinionStatModifiedEvent(StatType statType, float value)
+        {
+            this.statType = statType;
+            this.value = value;
         }
     }
     #endregion
