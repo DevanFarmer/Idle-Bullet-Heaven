@@ -47,10 +47,13 @@ public abstract class Perk : ScriptableObject
     /// <param name="modifier">Used for perks that want to modify the stats value by a multiple.</param>
     protected void ApplyStatModifiers(float modifier = 1)
     {
+        float newValue = 0;
         foreach (StatModifier statModifier in statModifiers)
         {
+            newValue = statModifier.value * modifier;
+            if (statModifier.bonusType == PassiveValueType.Percentage) newValue /= 100;
             ApplyModifier(new StatModifier(statModifier.targetStat, 
-                                           statModifier.value * modifier,
+                                           newValue,
                                            statModifier.bonusType));
         }
     }
@@ -61,11 +64,14 @@ public abstract class Perk : ScriptableObject
     /// <param name="modifier">Used for perks that want to modify the stats value by a multiple.</param>
     protected void RemoveStatModifiers(float modifier = 1)
     {
+        float newValue = 0;
         foreach (StatModifier statModifier in statModifiers)
         {
-            StatModifier newModifier = statModifier;
-            newModifier.value *= -1 * modifier;
-            ApplyModifier(newModifier);
+            newValue = statModifier.value * modifier;
+            if (statModifier.bonusType == PassiveValueType.Percentage) newValue /= 100;
+            ApplyModifier(new StatModifier(statModifier.targetStat,
+                                           newValue *= -1,
+                                           statModifier.bonusType));
         }
     }
 
