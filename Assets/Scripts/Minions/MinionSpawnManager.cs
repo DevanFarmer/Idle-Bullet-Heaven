@@ -34,7 +34,7 @@ public class MinionSpawnManager : MonoBehaviour
     void SpawnMinion(MinionSpawnData spawnData)
     {
         // get mouse position
-        Vector3 mouseScreenPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector3 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseScreenPosition.z = 0;
 
         // spawn prefab
