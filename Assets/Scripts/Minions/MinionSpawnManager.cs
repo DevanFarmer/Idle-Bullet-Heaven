@@ -34,7 +34,20 @@ public class MinionSpawnManager : MonoBehaviour
     void SpawnMinion(MinionSpawnData spawnData)
     {
         // get mouse position
+        Vector3 mouseScreenPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        mouseScreenPosition.z = 0;
+
         // spawn prefab
-        // set base stats
+        GameObject minion = Instantiate(spawnData.minionPrefab, mouseScreenPosition, Quaternion.identity);
+
+        // set stats
+        minion.GetComponent<StatManager>().SetCharacterStats(spawnData.stats);
+
+        // add perks
+        PerkManager perkManager = minion.GetComponent<PerkManager>();
+        foreach(Perk perk in spawnData.perks)
+        {
+            perkManager.GainPerk(perk);
+        }
     }
 }
