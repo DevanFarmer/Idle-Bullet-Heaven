@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New MinionSpawnData", menuName = "Minion/Spawn Data")]
 public class MinionSpawnData : ScriptableObject
 {
     public GameObject minionPrefab;
