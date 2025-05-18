@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5501851581230444733}
   - component: {fileID: 8319643744127401075}
   - component: {fileID: 1506899567647498539}
+  - component: {fileID: 5203575064354892097}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -193,3 +194,17 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityHits: 0
   characterType: 0
+--- !u!114 &5203575064354892097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960760974170360659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10523d083f85524e91faf9e7066914b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions:
+  - {fileID: 11400000, guid: d05011aa241301b4eb4056b6015ee63a, type: 2}
