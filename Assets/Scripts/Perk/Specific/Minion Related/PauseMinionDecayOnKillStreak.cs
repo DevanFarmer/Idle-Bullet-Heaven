@@ -1,6 +1,7 @@
 using EventBusEventData;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Perk/Kill Streak/Pause Minion Decay")]
 public class PauseMinionDecayOnKillStreak : Perk
 {
     public int enemiesNeededToTrigger;
