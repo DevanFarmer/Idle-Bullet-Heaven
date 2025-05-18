@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PerkManager : MonoBehaviour
 {
-    List<Perk> perkList;
+    [SerializeField] List<Perk> perkList;
 
     void Start()
     {
-        foreach (var perk in perkList)
-        {
-            perk.OnEquip(gameObject);
-        }
+        //foreach (var perk in perkList)
+        //{
+        //    perk.OnEquip(gameObject);
+        //}
     }
 
     void Update()
