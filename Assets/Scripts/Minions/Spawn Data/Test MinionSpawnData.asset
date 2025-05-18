@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514af7212e3afbb4eb5df5fb03d00dc5, type: 3}
+  m_Name: Test MinionSpawnData
+  m_EditorClassIdentifier: 
+  minionPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
+  stats: {fileID: 11400000, guid: a68922fdd903c28448e4d3fc499db879, type: 2}
+  spawnCooldown: 0
+  perks:
+  - {fileID: 11400000, guid: a8211d80aa7cb5e4d9a81648f6163c6f, type: 2}
