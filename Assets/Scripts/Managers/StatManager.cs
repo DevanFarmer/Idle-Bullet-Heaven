@@ -8,7 +8,7 @@ public class StatManager : MonoBehaviour
 
     private void Awake()
     {
-        SetBaseStats();
+        if (characterStats != null) SetBaseStats();
     }
 
     #region Stats
@@ -34,9 +34,19 @@ public class StatManager : MonoBehaviour
 
     #region Setting Base Stats
     [SerializeField] CharacterStats characterStats;
+    public void SetCharacterStats(CharacterStats characterStats)
+    {
+        this.characterStats = characterStats;
+        SetBaseStats();
+    }
 
     void SetBaseStats()
     {
+        if (characterStats == null)
+        {
+            Debug.LogError($"No character stats set on {gameObject.name}!");
+            return;
+        }
         baseStats.Health = characterStats.Health;
         baseStats.AttackPower = characterStats.AttackPower;
         baseStats.AttackSpeed = characterStats.AttackSpeed;
