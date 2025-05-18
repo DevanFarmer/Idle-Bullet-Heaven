@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinionManager : MonoBehaviour
+public class MinionSpawnManager : MonoBehaviour
 {
     [SerializeField] List<MinionSpawnData> minions = new();
 
