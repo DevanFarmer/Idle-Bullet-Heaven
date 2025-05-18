@@ -5,7 +5,8 @@ public class MinionSpawnData : ScriptableObject
 {
     public GameObject minionPrefab;
     public CharacterStats stats; // will store minionstats
-    // if want to use cooldown on spawns have set it here
+    public float spawnCooldown;
+    public List<Perk> perks = new();
 
     // could set base stats here instead of manager, but having them in one place feels better
 }
