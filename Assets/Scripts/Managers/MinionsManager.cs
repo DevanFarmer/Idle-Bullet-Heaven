@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// this manager is to handle pausing decay for all minion, might want to rename to minion decay manager instead
 public class MinionsManager : MonoBehaviour
 {
     #region Singleton
