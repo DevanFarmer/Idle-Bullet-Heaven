@@ -7,6 +7,7 @@ public class PerkManager : MonoBehaviour
 
     void Start()
     {
+        // Would only need this if the scene loads with characters, but since everything is spawned in this is unnecessary
         //foreach (var perk in perkList)
         //{
         //    perk.OnEquip(gameObject);
