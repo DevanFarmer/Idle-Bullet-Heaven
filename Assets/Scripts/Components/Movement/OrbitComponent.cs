@@ -45,7 +45,7 @@ public class OrbitComponent : MonoBehaviour
         currentRadius = spawnAtCenter ? 0f : maxRadius;
 
         // Start at correct position
-        angle = 0f;
+        angle = transform.eulerAngles.z; // important for changing the "start" of the orbit
         UpdatePosition();
     }
 
