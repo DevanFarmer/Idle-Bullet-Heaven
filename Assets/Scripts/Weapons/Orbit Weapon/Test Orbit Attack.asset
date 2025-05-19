@@ -12,16 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87f5f34d3103ef4785e1d6651fcfcdc, type: 3}
   m_Name: Test Orbit Attack
   m_EditorClassIdentifier: 
-  perkName: 
+  weaponName: 
   description: 
-  formattedDescription: 
-  effectDescription: 
-  statModifiers: []
   weaponPrefab: {fileID: 2536246327904255817, guid: c091fcef820ba2c49ac6b693cf462010, type: 3}
   power: 2
   attackSpeed: 3
   range: 3
-  numberOfSpawns: 1
+  numberOfSpawns: 2
   numberOfOrbits: 1
   orbitSpeed: 200
   spawnAtCenterThenMoveOut: 1
