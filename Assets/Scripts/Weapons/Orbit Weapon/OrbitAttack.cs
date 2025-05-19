@@ -41,7 +41,9 @@ public class OrbitAttack : Weapon
             Vector3 targetOffset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * range;
             Vector3 spawnPos = spawnAtCenterThenMoveOut ? owner.transform.position : owner.transform.position + targetOffset;
 
-            GameObject weapon = Instantiate(weaponPrefab, spawnPos, Quaternion.identity, owner.transform);
+            Quaternion rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+
+            GameObject weapon = Instantiate(weaponPrefab, spawnPos, rotation, owner.transform);
 
             // set damage
 
