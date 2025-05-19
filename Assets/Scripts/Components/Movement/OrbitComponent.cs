@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// bug with the script: it always move toward the maxRadius which does not account for the angle difference
 public class OrbitComponent : MonoBehaviour
 {
     private Transform center;
