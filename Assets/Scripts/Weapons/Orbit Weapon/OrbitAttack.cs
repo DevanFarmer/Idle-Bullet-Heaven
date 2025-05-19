@@ -16,6 +16,7 @@ public class OrbitAttack : Weapon
 
     public override void OnEquip(GameObject owner)
     {
+        base.OnEquip(owner);
         lastAttackTime = Time.time;
     }
 
@@ -30,7 +31,7 @@ public class OrbitAttack : Weapon
 
     public override void OnUnEquip(GameObject owner)
     {
-        
+        base.OnUnEquip(owner);
     }
 
     void Attack(GameObject owner)
@@ -46,6 +47,11 @@ public class OrbitAttack : Weapon
             GameObject weapon = Instantiate(weaponPrefab, spawnPos, rotation, owner.transform);
 
             // set damage
+            DamageComponent dmgComp = weapon.GetComponent<DamageComponent>();
+            if (dmgComp == null) dmgComp = weapon.AddComponent<DamageComponent>();
+
+            dmgComp.SetDamage(statManager.GetCalculatedStat(StatType.AttackPower) + power);
+            dmgComp.SetEnemyTag("Enemy");
 
             // Set orbit component
             OrbitComponent orbitComponent = weapon.GetComponent<OrbitComponent>();
