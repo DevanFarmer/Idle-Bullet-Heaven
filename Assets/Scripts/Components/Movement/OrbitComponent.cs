@@ -74,9 +74,19 @@ public class OrbitComponent : MonoBehaviour
                 state = State.Contracting;
                 rotatedDegrees = 0f; // optional: count circles again inward
             }
-            else
+            else if (!returnToCenter)
             {
                 Destroy(gameObject);
+                return;
+            }
+        }
+
+        if (state == State.Contracting)
+        {
+            if (returnToCenter && Vector3.Distance(transform.parent.position, transform.position) < 0.1f)
+            {
+                Destroy(gameObject);
+                return;
             }
         }
     }
