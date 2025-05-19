@@ -18,12 +18,12 @@ MonoBehaviour:
   effectDescription: 
   statModifiers: []
   weaponPrefab: {fileID: 2536246327904255817, guid: c091fcef820ba2c49ac6b693cf462010, type: 3}
-  power: 0
+  power: 2
   attackSpeed: 3
   range: 3
-  numberOfSpawns: 2
+  numberOfSpawns: 1
   numberOfOrbits: 1
   orbitSpeed: 200
-  spawnAtCenterThenMoveOut: 0
+  spawnAtCenterThenMoveOut: 1
   returnToCenterAfterOrbitComplete: 1
   moveSpeed: 10
