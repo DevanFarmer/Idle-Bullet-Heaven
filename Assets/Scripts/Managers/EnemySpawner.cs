@@ -54,8 +54,10 @@ public class EnemySpawner : MonoBehaviour
         if (health == null) { Debug.Log($"No HealthComponent found on {enemy.name}. Empty HealthComponent Added!"); health = enemy.AddComponent<HealthComponent>(); }
 
         health.onDeath += expGiver.GiveExperience;
+        health.onDeath += () => { Destroy(enemy); };
     }
 
+    // add options to only spawn from certain sides
     Vector3 GetOffscreenPosition()
     {
         Camera cam = Camera.main;
