@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8319643744127401075}
   - component: {fileID: 1506899567647498539}
   - component: {fileID: 5203575064354892097}
+  - component: {fileID: 8093655822591250252}
+  - component: {fileID: 4944478065239928646}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -208,3 +210,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minions:
   - {fileID: 11400000, guid: d05011aa241301b4eb4056b6015ee63a, type: 2}
+--- !u!114 &8093655822591250252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960760974170360659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d33b3e4c373a2e43bcf0e28c2c1c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkList: []
+--- !u!114 &4944478065239928646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960760974170360659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f26a39ea1d3264cab511e704e337d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponList:
+  - {fileID: 11400000, guid: 14e019b1875d325409659aeb717e421a, type: 2}
