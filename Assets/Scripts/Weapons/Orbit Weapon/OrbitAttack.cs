@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Weapon/Orbit Attack")]
 public class OrbitAttack : Weapon
 {
     [Header("Orbiting")]
