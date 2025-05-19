@@ -43,7 +43,7 @@ public class ExperienceManager : MonoBehaviour
     void LevelUp()
     {
         // Call StatManager LevelUp
-        playerStatManager.LevelUp();
+        // playerStatManager.LevelUp();
 
         // Set nextLevelUp amount
     }
