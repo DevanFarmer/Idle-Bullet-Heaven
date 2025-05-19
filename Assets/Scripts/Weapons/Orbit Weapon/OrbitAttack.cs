@@ -8,8 +8,6 @@ public class OrbitAttack : Weapon
     public int numberOfSpawns;
     public int numberOfOrbits;
     public float orbitSpeed;
-    [Tooltip("Used for the radius of the attack.")]
-    public new float range;
 
     [Header("Optional Behaviour")]
     public bool spawnAtCenterThenMoveOut;
