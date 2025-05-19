@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
         if (lastSpawnTime + spawnTime <= Time.time) // can add to spawner utilty
         {
             HandleEnemySpawns();
+            lastSpawnTime = Time.time;
+            SetSpawnTime();
         }
     }
 
