@@ -14,12 +14,6 @@ public class OrbitAttack : Weapon
     public bool returnToCenterAfterOrbitComplete;
     public float moveSpeed;
 
-    public override void OnEquip(GameObject owner)
-    {
-        base.OnEquip(owner);
-        lastAttackTime = Time.time;
-    }
-
     public override void OnUpdate(GameObject owner)
     {
         if (lastAttackTime + attackSpeed <= Time.time)
@@ -27,11 +21,6 @@ public class OrbitAttack : Weapon
             Attack(owner);
             lastAttackTime = Time.time;
         }
-    }
-
-    public override void OnUnEquip(GameObject owner)
-    {
-        base.OnUnEquip(owner);
     }
 
     void Attack(GameObject owner)
