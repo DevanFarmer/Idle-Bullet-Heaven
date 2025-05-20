@@ -39,7 +39,7 @@ public class HealthComponent : MonoBehaviour
                 break;
             case CharacterType.Minion:
                 EventBus.Subscribe<MinionStatModifiedEvent>(OnMinionStatModified);
-                onDeath += () => { EventBus.Publish(new MinionStatModifiedEvent()); };
+                onDeath += () => { EventBus.Publish(new MinionDeathEvent()); };
                 break;
         }
 
