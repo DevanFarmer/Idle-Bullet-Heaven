@@ -65,6 +65,10 @@ public class EnemySpawner : MonoBehaviour
 
         health.onDeath += expGiver.GiveExperience;
         health.onDeath += () => { Destroy(enemy); };
+
+        MovementComponent moveComp = enemy.GetComponent<MovementComponent>();
+        if (moveComp == null) { /* Warning */ }
+        moveComp.SetTarget(GameManager.Instance.GetPlayer().transform);
     }
 
     // add options to only spawn from certain sides

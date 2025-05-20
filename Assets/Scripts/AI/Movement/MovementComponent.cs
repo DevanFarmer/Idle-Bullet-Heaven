@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementComponent : MonoBehaviour
 {
-    Vector3 targetPos;
+    Transform targetPos;
     Rigidbody2D rb;
 
     [SerializeField] float moveSpeed;
@@ -23,13 +22,13 @@ public class MovementComponent : MonoBehaviour
     private void FixedUpdate()
     {
         if (!canMove) return;
-        if (Vector3.Distance(transform.position, targetPos) > minDistance) 
+        if (Vector3.Distance(transform.position, targetPos.position) > minDistance) 
             Move();
     }
 
     void Move()
     {
-        Vector3 direction = targetPos - transform.position;
+        Vector3 direction = targetPos.position - transform.position;
 
         rb.MovePosition(transform.position + direction.normalized * moveSpeed * Time.fixedDeltaTime);
     }
@@ -38,5 +37,10 @@ public class MovementComponent : MonoBehaviour
     public void SetCanMoveInverted(bool canMove)
     {
         this.canMove = !canMove;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.targetPos = target;
     }
 }
