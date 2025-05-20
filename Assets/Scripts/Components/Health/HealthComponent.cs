@@ -42,7 +42,7 @@ public class HealthComponent : MonoBehaviour
                 onDeath += () => { EventBus.Publish(new MinionDeathEvent()); };
                 break;
             case CharacterType.Shield:
-                // StatChanged event
+                EventBus.Subscribe<ShieldStatChanged>(OnShieldStatModified);
                 break;
         }
 
@@ -111,6 +111,12 @@ public class HealthComponent : MonoBehaviour
         UpdateMaxHealth();
     }
 
+    void OnShieldStatModified(ShieldStatChanged e)
+    {
+        if (e.statType != StatType.Health) return;
+        UpdateMaxHealth();
+    }
+
     void UpdateMaxHealth()
     {
         if (statManager == null) 
@@ -139,7 +145,7 @@ public class HealthComponent : MonoBehaviour
                 EventBus.Publish(new EnemyHitEvent(gameObject, damage));
                 break;
             case CharacterType.Shield:
-                // Hit event
+                EventBus.Publish(new ShieldHitEvent(damage));
                 break;
         }
     }
