@@ -2,22 +2,23 @@ using UnityEngine;
 
 public abstract class BaseAttack : ScriptableObject
 {
-    public float attackPower;
+    public float power;
+    public float speed;
     public float range;
 
     // could store transform of character and layerMask
     protected Transform characterTransform;
     protected LayerMask targetMask;
 
-    public virtual void Equip(Transform transform, LayerMask mask)
+    public virtual void Equip(Transform characterTransform, LayerMask targetMask)
     {
-        characterTransform = transform;
-        targetMask = mask;
+        this.characterTransform = characterTransform;
+        this.targetMask = targetMask;
     }
 
     public abstract void Attack(); // Use Weapon?
 
-    public virtual bool InRange()
+    public virtual bool InRange() // runs in Update
     {
         Collider2D[] hits = GetHitsInRange();
         if (hits.Length > 0) return true;
