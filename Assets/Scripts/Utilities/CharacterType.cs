@@ -2,5 +2,6 @@ public enum CharacterType
 {
     Player, 
     Minion,
-    Enemy
+    Enemy,
+    Shield
 }
