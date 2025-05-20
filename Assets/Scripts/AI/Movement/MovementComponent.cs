@@ -21,6 +21,7 @@ public class MovementComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (targetPos == null) return;
         if (!canMove) return;
         if (Vector3.Distance(transform.position, targetPos.position) > minDistance) 
             Move();
