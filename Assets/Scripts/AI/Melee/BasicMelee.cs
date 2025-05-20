@@ -12,7 +12,7 @@ public class BasicMelee : BaseAttack
             HealthComponent health = hit.GetComponent<HealthComponent>();
             if (health == null) continue;
 
-            health.TakeDamage(attackPower);
+            health.TakeDamage(power); // get stats
         }
     }
 }
