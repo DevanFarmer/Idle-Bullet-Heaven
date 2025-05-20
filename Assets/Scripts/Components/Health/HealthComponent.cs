@@ -113,6 +113,11 @@ public class HealthComponent : MonoBehaviour
 
     void UpdateMaxHealth()
     {
+        if (statManager == null) 
+        {
+            Debug.LogWarning($"No stat manager found on {gameObject.name} for {this.name}! Could not update max health!");
+            return;
+        }
         maxHealth = statManager.GetCalculatedStat(StatType.Health);
     }
 
