@@ -108,6 +108,8 @@ namespace EventBusEventData
     }
 
     public readonly struct ReviveEvent { }
+
+    public readonly struct ShieldBroke { }
     #endregion
 
     #region Minion Events
