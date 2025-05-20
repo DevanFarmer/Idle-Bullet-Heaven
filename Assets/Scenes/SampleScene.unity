@@ -464,6 +464,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 0e0e5bfd5dc2a814d849834c031a5cab, type: 2}
   spawnOffset: 0
+  minSingleSpawn: 1
   maxSingleSpawn: 2
   minSpawnTime: 1
   maxSpawnTime: 2
@@ -487,7 +488,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 27891277}
+  - {fileID: 602964986}
+  - {fileID: 1208808951}
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 1208808951}
-  - {fileID: 602964986}
