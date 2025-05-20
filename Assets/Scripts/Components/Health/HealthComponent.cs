@@ -14,6 +14,9 @@ public class HealthComponent : MonoBehaviour
     [Header("Character Type")]
     [SerializeField] CharacterType characterType;
 
+    [Header("Other")]
+    [SerializeField] bool canHealAfterDeath;
+
     StatManager statManager;
 
     public Action onDeath;
@@ -74,7 +77,7 @@ public class HealthComponent : MonoBehaviour
 
     public void Heal(float amount)
     {
-        if (isDead) return;
+        if (!canHealAfterDeath && isDead) return;
         
         currentHealth += amount;
 
