@@ -41,6 +41,9 @@ public class HealthComponent : MonoBehaviour
                 EventBus.Subscribe<MinionStatModifiedEvent>(OnMinionStatModified);
                 onDeath += () => { EventBus.Publish(new MinionDeathEvent()); };
                 break;
+            case CharacterType.Shield:
+                // StatChanged event
+                break;
         }
 
         currentHealth = maxHealth;
@@ -129,6 +132,9 @@ public class HealthComponent : MonoBehaviour
                 break;
             case CharacterType.Enemy:
                 EventBus.Publish(new EnemyHitEvent(gameObject, damage));
+                break;
+            case CharacterType.Shield:
+                // Hit event
                 break;
         }
     }
