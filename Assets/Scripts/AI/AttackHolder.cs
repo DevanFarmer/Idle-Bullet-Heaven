@@ -43,8 +43,8 @@ public class AttackHolder : MonoBehaviour
         }
     }
 
-    public void TestMethod()
+    public void TestInRangeMethod()
     {
-        Debug.Log($"Ping! From {this.name} on {gameObject.name}");
+        Debug.Log($"Ping {inRange}! From {this.name} on {gameObject.name}");
     }
 }
