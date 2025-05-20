@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4843397434865149006}
   - component: {fileID: 6983959918350645357}
   - component: {fileID: 8369839758359435642}
+  - component: {fileID: 6464076272892482108}
+  - component: {fileID: -7069649165532118115}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -185,10 +187,10 @@ MonoBehaviour:
   onInRangeChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8369839758359435642}
-        m_TargetAssemblyTypeName: AttackHolder, Assembly-CSharp
-        m_MethodName: TestInRangeMethod
-        m_Mode: 1
+      - m_Target: {fileID: -7069649165532118115}
+        m_TargetAssemblyTypeName: MovementComponent, Assembly-CSharp
+        m_MethodName: SetCanMoveInverted
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -197,3 +199,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!50 &6464076272892482108
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560548715742454156}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-7069649165532118115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560548715742454156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e04fbbc2190b341bcc35dc25722ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  minDistance: 0
+  canMove: 0

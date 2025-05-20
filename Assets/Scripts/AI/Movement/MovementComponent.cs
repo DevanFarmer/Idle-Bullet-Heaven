@@ -10,16 +10,19 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
 
-    // could make StatManager not a singlton and find the players StatManager in GameManager 
+    [SerializeField] bool canMove;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
+
+        canMove = true;
     }
 
     private void FixedUpdate()
     {
+        if (!canMove) return;
         if (Vector3.Distance(transform.position, targetPos) > minDistance) 
             Move();
     }
@@ -28,6 +31,12 @@ public class MovementComponent : MonoBehaviour
     {
         Vector3 direction = targetPos - transform.position;
 
-        rb.MovePosition(transform.position + direction * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + direction.normalized * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    // inverted for in range, so when in range don't move, when not in range can move
+    public void SetCanMoveInverted(bool canMove)
+    {
+        this.canMove = !canMove;
     }
 }
