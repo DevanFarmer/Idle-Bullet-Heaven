@@ -6,26 +6,21 @@ public abstract class BaseAttack : ScriptableObject
     public float speed;
     public float range;
 
-    // could store transform of character and layerMask
-    protected Transform characterTransform;
-    protected LayerMask targetMask;
-
-    public virtual void Equip(Transform characterTransform, LayerMask targetMask)
+    public virtual void Equip()
     {
-        this.characterTransform = characterTransform;
-        this.targetMask = targetMask;
+
     }
 
-    public abstract void Attack(); // Use Weapon?
+    public abstract void Attack(Transform characterTransform, LayerMask targetMask); // Use Weapon?
 
-    public virtual bool InRange() // runs in Update
+    public virtual bool InRange(Transform characterTransform, LayerMask targetMask) // runs in Update, virtual in case an attack wants to check in a different way
     {
-        Collider2D[] hits = GetHitsInRange();
+        Collider2D[] hits = GetHitsInRange(characterTransform, targetMask);
         if (hits.Length > 0) return true;
         else return false;
     }
 
-    protected Collider2D[] GetHitsInRange()
+    protected Collider2D[] GetHitsInRange(Transform characterTransform, LayerMask targetMask)
     {
         return Physics2D.OverlapCircleAll(characterTransform.position, range, targetMask.value);// check if .value is what overlay wants
     }

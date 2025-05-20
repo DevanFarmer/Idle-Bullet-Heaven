@@ -15,7 +15,7 @@ public class AttackHolder : MonoBehaviour
 
     void Start()
     {
-        attack.Equip(transform, targetMask);
+        attack.Equip();
         lastAttackTime = Time.time;
 
         inRange = false;
@@ -27,14 +27,14 @@ public class AttackHolder : MonoBehaviour
 
         if (inRange && lastAttackTime + attack.speed <= Time.time)
         {
-            attack.Attack();
+            attack.Attack(transform, targetMask);
             lastAttackTime = Time.time;
         }
     }
 
     void CheckInRange()
     {
-        bool rangeState = attack.InRange();
+        bool rangeState = attack.InRange(transform, targetMask);
 
         if (rangeState != inRange)
         {
