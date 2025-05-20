@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
-public class Enemy : ScriptableObject
+[CreateAssetMenu(fileName = "New EnemySpawnData", menuName = "Enemy/Spawn Data")]
+public class EnemySpawnData : ScriptableObject
 {
     // Can make a baseCharacter Class that stores common things like prefab, attack animation etc.
     // Weapon/Attack?
@@ -9,4 +9,6 @@ public class Enemy : ScriptableObject
     public GameObject prefab;
 
     public float expPoints;
+
+    // stats
 }
