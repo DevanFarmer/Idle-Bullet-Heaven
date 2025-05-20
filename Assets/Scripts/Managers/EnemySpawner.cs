@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] List<EnemySpawnData> enemies = new List<EnemySpawnData>();
 
     [SerializeField] float spawnOffset;
     [SerializeField] int maxSingleSpawn;
@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(Enemy enemyCharacter)
+    void SpawnEnemy(EnemySpawnData enemyCharacter)
     {
         GameObject enemy = Instantiate(enemyCharacter.prefab, GetOffscreenPosition(), Quaternion.identity);
 
