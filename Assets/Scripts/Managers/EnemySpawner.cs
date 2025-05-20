@@ -6,7 +6,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<EnemySpawnData> enemies = new List<EnemySpawnData>();
 
     [SerializeField] float spawnOffset;
+    [Header("Spawn Numbers")]
+    [SerializeField] int minSingleSpawn;
     [SerializeField] int maxSingleSpawn;
+
+    [Header("Spawn Times")]
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
 
@@ -40,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
 
     void HandleEnemySpawns() // can add to spawner utilty
     {
-        int numberOfSpawns = Random.Range(1, maxSingleSpawn + 1);
+        int numberOfSpawns = Random.Range(minSingleSpawn, maxSingleSpawn + 1);
 
         for (int i = 0; i < numberOfSpawns; i++)
         {
