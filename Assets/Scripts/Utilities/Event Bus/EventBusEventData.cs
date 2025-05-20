@@ -108,8 +108,32 @@ namespace EventBusEventData
     }
 
     public readonly struct ReviveEvent { }
+    #endregion
 
+    #region Shield Events
     public readonly struct ShieldBroke { }
+
+    public readonly struct ShieldHitEvent
+    {
+        public readonly float Damage;
+
+        public ShieldHitEvent(float damage)
+        {
+            Damage = damage;
+        }
+    }
+
+    public readonly struct ShieldStatChanged
+    {
+        public readonly StatType statType;
+        public readonly float value;
+
+        public ShieldStatChanged(StatType statType, float value)
+        {
+            this.statType = statType;
+            this.value = value;
+        }
+    }
     #endregion
 
     #region Minion Events
