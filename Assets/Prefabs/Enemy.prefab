@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8369839758359435642}
   - component: {fileID: 6464076272892482108}
   - component: {fileID: -7069649165532118115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -168,6 +168,7 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityHits: 0
   characterType: 2
+  canHealAfterDeath: 0
 --- !u!114 &8369839758359435642
 MonoBehaviour:
   m_ObjectHideFlags: 0
