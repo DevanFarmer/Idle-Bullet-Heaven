@@ -465,9 +465,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e0e5bfd5dc2a814d849834c031a5cab, type: 2}
   spawnOffset: 0
   minSingleSpawn: 1
-  maxSingleSpawn: 2
-  minSpawnTime: 1
-  maxSpawnTime: 2
+  maxSingleSpawn: 1
+  minSpawnTime: 2
+  maxSpawnTime: 5
 --- !u!4 &1208808951
 Transform:
   m_ObjectHideFlags: 0
