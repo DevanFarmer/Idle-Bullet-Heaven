@@ -44,4 +44,10 @@ public class MovementComponent : MonoBehaviour
     {
         this.targetPos = target;
     }
+
+    public bool HasTarget()
+    {
+        if (targetPos == null) return false;
+        else return true;
+    }
 }
