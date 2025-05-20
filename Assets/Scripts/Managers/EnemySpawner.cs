@@ -13,8 +13,12 @@ public class EnemySpawner : MonoBehaviour
     private float lastSpawnTime;
     private float spawnTime;
 
+    Camera cam;
+
     private void Start()
     {
+        cam = Camera.main;
+
         lastSpawnTime = Time.time;
         SetSpawnTime();
     }
@@ -62,17 +66,47 @@ public class EnemySpawner : MonoBehaviour
     // add options to only spawn from certain sides
     Vector3 GetOffscreenPosition()
     {
-        Camera cam = Camera.main;
+        // Choose main side(top, left, down, right)
+        // Set x or y to main side plus offset
+        // Get random value from (top to bottom or left to right)
 
-        // Get camera bounds(right and bottom of camera)
-        float camHeight = 2f * cam.orthographicSize;
-        float camWidth = camHeight * cam.aspect;
+        // Rework this
 
-        // Set spawn to top and left and randomly switch to bottom or right sides
-        float xPos = -spawnOffset, yPos = -spawnOffset;
-        if (Random.Range(0, 2) == 1) xPos = camWidth + spawnOffset;
-        if (Random.Range(0, 2) == 1) yPos = camHeight + spawnOffset;
+        // Get corners
+        // Bottom-left corner
+        Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        // Top-left corner
+        Vector3 topLeft = cam.ViewportToWorldPoint(new Vector3(0, 1, cam.nearClipPlane));
+        // Top-right corner
+        Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
+        // Bottom-right corner
+        Vector3 bottomRight = cam.ViewportToWorldPoint(new Vector3(1, 0, cam.nearClipPlane));
 
-        return new Vector3(xPos, yPos);
+        // Choose a random side to be the main side
+        int randomside = Random.Range(0, 4);
+
+        float xPos = 0, yPos = 0;
+
+        switch (randomside)
+        {
+            case 0: // top
+                yPos = topLeft.y + spawnOffset;
+                xPos = Random.Range(topLeft.x, topRight.x);
+                break;
+            case 1: // left
+                xPos = topLeft.x - spawnOffset;
+                yPos = Random.Range(topLeft.y, bottomLeft.y);
+                break;
+            case 2: // right
+                xPos = topRight.x + spawnOffset;
+                yPos = Random.Range(topRight.y, bottomRight.y);
+                break;
+            case 3: // bottom
+                yPos = bottomLeft.y - spawnOffset;
+                xPos = Random.Range(bottomLeft.x, bottomRight.x);
+                break;
+        }
+
+        return new Vector3(xPos, yPos, 0f);
     }
 }
