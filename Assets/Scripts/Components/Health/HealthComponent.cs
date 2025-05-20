@@ -57,7 +57,7 @@ public class HealthComponent : MonoBehaviour
 
         HandleCharacterHitEvents(damage);
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Die();
             return true;
