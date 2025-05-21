@@ -50,15 +50,22 @@ public class ShieldComponent : MonoBehaviour
         playerCollider.enabled = true;
     }
 
+    void OnShieldHit(ShieldHitEvent e)
+    {
+        lastHealTick = Time.time;
+    }
+
     void OnEnable()
     {
         EventBus.Subscribe<PlayerSafeEvent>(OnPlayerSafe);
         EventBus.Subscribe<ShieldBroke>(OnShieldBroken); // could not use but this makes it safer than just using health comp ondeath action
+        EventBus.Subscribe<ShieldHitEvent>(OnShieldHit);
     }
 
     void OnDisable()
     {
         EventBus.Unsubscribe<PlayerSafeEvent>(OnPlayerSafe);
         EventBus.Unsubscribe<ShieldBroke>(OnShieldBroken);
+        EventBus.Unsubscribe<ShieldHitEvent>(OnShieldHit);
     }
 }
