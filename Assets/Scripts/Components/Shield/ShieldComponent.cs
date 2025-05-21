@@ -20,6 +20,7 @@ public class ShieldComponent : MonoBehaviour
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onDeath += () => { EventBus.Publish(new ShieldBroke()); };
 
+        regenShield = true;
         lastHealTick = Time.time;
     }
 
