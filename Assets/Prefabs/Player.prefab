@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa77ba4b1ff19a442b931ff8b4891f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldCollider: {fileID: 6015283595721100643}
   playerCollider: {fileID: 1337170008751690689}
   regenTick: 2
   regenAmount: 2
@@ -355,7 +354,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c28b81201a1058439356dbacf1813c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safeTime: 2
-  lastCheckTime: 0
-  isSafe: 0
-  eventPublished: 0
+  safeTime: 5

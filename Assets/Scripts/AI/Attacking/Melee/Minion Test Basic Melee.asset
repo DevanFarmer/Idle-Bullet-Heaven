@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee3e7b0034221444a4010e2754826c1, type: 3}
   m_Name: Minion Test Basic Melee
   m_EditorClassIdentifier: 
-  power: 0
-  speed: 0
-  range: 0
+  power: 5
+  speed: 0.5
+  range: 0.5
