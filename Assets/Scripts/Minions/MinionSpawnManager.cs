@@ -49,5 +49,9 @@ public class MinionSpawnManager : MonoBehaviour
         {
             perkManager.GainPerk(perk);
         }
+
+        // add death
+        HealthComponent health = minion.GetComponent<HealthComponent>();
+        health.onDeath += () => { Destroy(minion); };
     }
 }
