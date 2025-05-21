@@ -1,3 +1,4 @@
+using EventBusEventData;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,5 +54,7 @@ public class MinionSpawnManager : MonoBehaviour
         // add death
         HealthComponent health = minion.GetComponent<HealthComponent>();
         health.onDeath += () => { Destroy(minion); };
+
+        EventBus.Publish(new MinionSummonEvent(minion));
     }
 }
