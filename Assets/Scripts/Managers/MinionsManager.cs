@@ -4,9 +4,9 @@ using UnityEngine;
 public class MinionsManager : MonoBehaviour
 {
     #region Singleton
-    private MinionsManager instance = null;
+    private static MinionsManager instance = null;
 
-    public static MinionsManager Instance { get { return Instance; } }
+    public static MinionsManager Instance { get { return instance; } }
 
     void HandleSingleton()
     {
