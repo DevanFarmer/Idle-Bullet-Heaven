@@ -5,6 +5,7 @@ public class ShieldComponent : MonoBehaviour
 {
     HealthComponent healthComponent;
     Collider2D shieldCollider;
+    SpriteRenderer gfx;
     [SerializeField] Collider2D playerCollider;
 
     [SerializeField] float regenTick;
@@ -19,6 +20,8 @@ public class ShieldComponent : MonoBehaviour
 
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.onDeath += () => { EventBus.Publish(new ShieldBroke()); };
+
+        gfx = GetComponentInChildren<SpriteRenderer>();
 
         regenShield = true;
         lastHealTick = Time.time;
@@ -41,6 +44,7 @@ public class ShieldComponent : MonoBehaviour
         regenShield = true;
         shieldCollider.enabled = true;
         playerCollider.enabled = false; // disable while shield to prevent aoe damage
+        gfx.enabled = true;
     }
 
     void OnShieldBroken(ShieldBroke e)
@@ -48,6 +52,7 @@ public class ShieldComponent : MonoBehaviour
         regenShield = false;
         shieldCollider.enabled = false;
         playerCollider.enabled = true;
+        gfx.enabled = false;
     }
 
     void OnShieldHit(ShieldHitEvent e)
