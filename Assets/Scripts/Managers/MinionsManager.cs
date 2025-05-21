@@ -29,6 +29,7 @@ public class MinionsManager : MonoBehaviour
     private void Awake()
     {
         HandleSingleton();
+        minionsDecay = true;
     }
 
     private void Update()
