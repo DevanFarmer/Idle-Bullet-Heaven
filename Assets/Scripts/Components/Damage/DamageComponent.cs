@@ -52,4 +52,9 @@ public class DamageComponent : MonoBehaviour
     {
         this.enemyTag = enemyTag;
     }
+
+    public void DestroySelf() // temp solution fpr projectile, will use object pooling for projectiles later
+    {
+        Destroy(gameObject);
+    }
 }
