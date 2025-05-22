@@ -17,6 +17,15 @@ public class EnemySpawner : MonoBehaviour
     private float lastSpawnTime;
     private float spawnTime;
 
+    [Header("Hoardes")] // make scriptable object with these stats
+    [SerializeField] bool canSpawnHoard;
+    [SerializeField, Range(1, 100)] float hoardChance;
+    [SerializeField] float hoardCheckTime;
+    [SerializeField] int minHoardSpawns;
+    [SerializeField] int maxHoardSpawns;
+    float lastHoardTime;
+    int hoardRoll;
+
     Camera cam;
 
     private void Start()
@@ -24,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
         cam = Camera.main;
 
         lastSpawnTime = Time.time;
+        lastHoardTime = Time.time;
+        hoardRoll = 1000;
         SetSpawnTime();
     }
 
@@ -31,9 +42,22 @@ public class EnemySpawner : MonoBehaviour
     {
         if (lastSpawnTime + spawnTime <= Time.time) // can add to spawner utilty
         {
-            HandleEnemySpawns();
+            HandleEnemySpawns(minSingleSpawn, maxSingleSpawn);
             lastSpawnTime = Time.time;
             SetSpawnTime();
+        }
+
+        if (canSpawnHoard)
+        {
+            if (lastHoardTime + hoardCheckTime <= Time.time)
+            {
+                hoardRoll = Random.Range(0, 100);
+                if (hoardRoll <= hoardChance)
+                {
+                    HandleEnemySpawns(minHoardSpawns, maxHoardSpawns); // can make a method to bunch hoard
+                    lastHoardTime = Time.time;
+                }
+            }
         }
     }
 
@@ -42,9 +66,9 @@ public class EnemySpawner : MonoBehaviour
         spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    void HandleEnemySpawns() // can add to spawner utilty
+    void HandleEnemySpawns(int minSpawns, int maxSpawns) // can add to spawner utilty
     {
-        int numberOfSpawns = Random.Range(minSingleSpawn, maxSingleSpawn + 1);
+        int numberOfSpawns = Random.Range(minSpawns, maxSpawns + 1);
 
         for (int i = 0; i < numberOfSpawns; i++)
         {

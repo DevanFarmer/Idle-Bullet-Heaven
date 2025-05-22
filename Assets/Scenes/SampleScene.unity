@@ -872,6 +872,11 @@ MonoBehaviour:
   maxSingleSpawn: 1
   minSpawnTime: 2
   maxSpawnTime: 5
+  canSpawnHoard: 1
+  hoardChance: 50
+  hoardCheckTime: 2
+  minHoardSpawns: 5
+  maxHoardSpawns: 10
 --- !u!4 &1208808951
 Transform:
   m_ObjectHideFlags: 0
