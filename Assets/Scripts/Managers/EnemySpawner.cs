@@ -51,12 +51,12 @@ public class EnemySpawner : MonoBehaviour
         {
             if (lastHoardTime + hoardCheckTime <= Time.time)
             {
-                hoardRoll = Random.Range(0, 100);
+                hoardRoll = Random.Range(0, 101);
                 if (hoardRoll <= hoardChance)
                 {
                     HandleEnemySpawns(minHoardSpawns, maxHoardSpawns); // can make a method to bunch hoard
-                    lastHoardTime = Time.time;
                 }
+                lastHoardTime = Time.time;
             }
         }
     }
