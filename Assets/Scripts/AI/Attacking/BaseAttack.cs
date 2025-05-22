@@ -28,8 +28,8 @@ public abstract class BaseAttack : ScriptableObject
         return Physics2D.OverlapCircleAll(characterTransform.position, range, targetMask.value);// check if .value is what overlay wants
     }
 
-    protected void DamageTarget(HealthComponent targetHealth, StatManager statManager)
+    protected float GetDamage(StatManager statManager)
     {
-        targetHealth.TakeDamage(power + statManager.GetCalculatedStat(StatType.AttackPower));
+        return power + statManager.GetCalculatedStat(StatType.AttackPower);
     }
 }

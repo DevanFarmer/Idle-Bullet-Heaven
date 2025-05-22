@@ -8,6 +8,6 @@ public class BasicMelee : BaseAttack
         HealthComponent health = target.GetComponent<HealthComponent>();
         if (health == null) return;
 
-        DamageTarget(health, statManager);
+        health.TakeDamage(GetDamage(statManager));
     }
 }
