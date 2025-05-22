@@ -136,6 +136,11 @@ public class HealthComponent : MonoBehaviour
 
     public float GetCurrentHealth() { return currentHealth; }
 
+    public bool IsAlive()
+    {
+        return !isDead;
+    }
+
     void HandleCharacterHitEvents(float damage)
     {
         switch (characterType)
