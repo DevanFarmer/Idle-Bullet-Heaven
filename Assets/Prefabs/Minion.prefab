@@ -228,7 +228,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 128
-  detectionRange: 2
+  detectionRange: 4
 --- !u!114 &-1245505980544196714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f20cfa499eaf844b294d02a4334ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 11400000, guid: babbb373f7ad3134a8d644aab45372a8, type: 2}
+  attack: {fileID: 11400000, guid: 99582dc2ec29191489403f19b54dca34, type: 2}
   targetMask:
     serializedVersion: 2
     m_Bits: 128

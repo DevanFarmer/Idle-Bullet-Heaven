@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee3e7b0034221444a4010e2754826c1, type: 3}
-  m_Name: Test Basic Melee
+  m_Script: {fileID: 11500000, guid: afd9d7596d8480249b5762db269d7f36, type: 3}
+  m_Name: Test Basic Ranged
   m_EditorClassIdentifier: 
-  power: 2
-  attackSpeed: 1.5
-  range: 1
+  power: 1
+  attackSpeed: 0.5
+  range: 3
+  projectileprefab: {fileID: 2270311724273591898, guid: b6c7b47fbd878504784811fae432d1d3, type: 3}
+  moveSpeed: 2

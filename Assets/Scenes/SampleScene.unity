@@ -1153,6 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8860fb3b92dff459064929d713f6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthComponent: {fileID: 0}
   characterType: 0
 --- !u!1 &1712285371
 GameObject:
@@ -1204,6 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8860fb3b92dff459064929d713f6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthComponent: {fileID: 0}
   characterType: 3
 --- !u!114 &1712285374
 MonoBehaviour:

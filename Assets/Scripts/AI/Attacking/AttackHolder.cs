@@ -20,7 +20,7 @@ public class AttackHolder : MonoBehaviour, ITargetObserver
     {
         stats = GetComponent<StatManager>();
 
-        attack.Equip();
+        attack.Equip(transform);
         lastAttackTime = Time.time;
 
         inRange = false;
@@ -32,7 +32,7 @@ public class AttackHolder : MonoBehaviour, ITargetObserver
 
         CheckInRange();
 
-        if (inRange && lastAttackTime + attack.speed <= Time.time)
+        if (inRange && lastAttackTime + attack.attackSpeed <= Time.time)
         {
             attack.Attack(transform, target, stats);
             lastAttackTime = Time.time;

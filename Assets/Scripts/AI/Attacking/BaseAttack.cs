@@ -3,12 +3,12 @@ using UnityEngine;
 public abstract class BaseAttack : ScriptableObject
 {
     public float power;
-    public float speed;
+    public float attackSpeed;
     public float range;
 
-    public virtual void Equip()
+    public virtual void Equip(Transform character)
     {
-
+        
     }
 
     public virtual void Attack(Transform character, Transform target, StatManager statManager) // Use Weapon?
