@@ -38,11 +38,6 @@ public class TargetComponent : MonoBehaviour
         return Physics2D.OverlapCircleAll(characterTransform.position, detectionRange, targetMask.value);// check if .value is what overlay wants
     }
 
-    public Transform GetTarget()
-    {
-        return target;
-    }
-
     void GetTargetObservers()
     {
         ITargetObserver[] _targetObservers = GetComponents<ITargetObserver>();
