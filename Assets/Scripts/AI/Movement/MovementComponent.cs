@@ -1,13 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovementComponent : MonoBehaviour
+public class MovementComponent : MonoBehaviour, ITargetObserver
 {
-    Transform targetPos;
+    [SerializeField] Transform targetPos;
     Rigidbody2D rb;
 
     [SerializeField] float moveSpeed;
-    [SerializeField] float minDistance;
+    [SerializeField] float minDistance; // originally meant for stopping when in attack range but now is kinda useless
 
     [SerializeField] bool canMove;
 
@@ -43,11 +43,5 @@ public class MovementComponent : MonoBehaviour
     public void SetTarget(Transform target)
     {
         this.targetPos = target;
-    }
-
-    public bool HasTarget()
-    {
-        if (targetPos == null) return false;
-        else return true;
     }
 }

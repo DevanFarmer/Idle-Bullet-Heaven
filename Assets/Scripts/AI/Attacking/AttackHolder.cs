@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AttackHolder : MonoBehaviour
+public class AttackHolder : MonoBehaviour, ITargetObserver
 {
     [SerializeField] BaseAttack attack; // list be a list, but need to think how to handle each timer
-    [SerializeField] LayerMask targetMask;
+    [SerializeField] LayerMask targetMask; // get from target comp
 
     public UnityEvent<bool> onInRangeChanged;
 
@@ -13,8 +13,13 @@ public class AttackHolder : MonoBehaviour
 
     bool inRange;
 
+    Transform target; // store in a middle man class since attack and movement need it
+    StatManager stats;
+
     void Start()
     {
+        stats = GetComponent<StatManager>();
+
         attack.Equip();
         lastAttackTime = Time.time;
 
@@ -23,11 +28,13 @@ public class AttackHolder : MonoBehaviour
 
     void Update()
     {
+        if (target == null) return;
+
         CheckInRange();
 
         if (inRange && lastAttackTime + attack.speed <= Time.time)
         {
-            attack.Attack(transform, targetMask);
+            attack.Attack(transform, target, stats);
             lastAttackTime = Time.time;
         }
     }
@@ -46,5 +53,10 @@ public class AttackHolder : MonoBehaviour
     public void TestInRangeMethod()
     {
         Debug.Log($"Ping {inRange}! From {this.name} on {gameObject.name}");
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
     }
 }

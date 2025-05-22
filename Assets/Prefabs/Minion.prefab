@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8319643744127401075}
   - component: {fileID: 1506899567647498539}
   - component: {fileID: 5206299935988960273}
-  - component: {fileID: 8041547958255843506}
+  - component: {fileID: 3299328846556659675}
   - component: {fileID: -1245505980544196714}
   - component: {fileID: 2294553353449272636}
   - component: {fileID: 4219220074071133740}
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkList: []
---- !u!114 &8041547958255843506
+--- !u!114 &3299328846556659675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,13 +222,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5960760974170360659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8a0a77fdc7c91469c1faf64d62f590, type: 3}
+  m_Script: {fileID: 11500000, guid: dcefa6d758fc3194090fc36fce96577c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 3
   targetMask:
     serializedVersion: 2
     m_Bits: 128
+  detectionRange: 2
 --- !u!114 &-1245505980544196714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e04fbbc2190b341bcc35dc25722ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPos: {fileID: 0}
   moveSpeed: 2
   minDistance: 0
   canMove: 0
@@ -287,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3490c3932486742b214e3a2ecce72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayRate: 1
+  decayRate: 10
   decayAmount: 10
   amountValueType: 1
 --- !u!1001 &1731771865672181236

@@ -11,7 +11,10 @@ public abstract class BaseAttack : ScriptableObject
 
     }
 
-    public abstract void Attack(Transform characterTransform, LayerMask targetMask); // Use Weapon?
+    public virtual void Attack(Transform character, Transform target, StatManager statManager) // Use Weapon?
+    {
+        // use weapon
+    }
 
     public virtual bool InRange(Transform characterTransform, LayerMask targetMask) // runs in Update, virtual in case an attack wants to check in a different way
     {
@@ -20,8 +23,13 @@ public abstract class BaseAttack : ScriptableObject
         else return false;
     }
 
-    protected Collider2D[] GetHitsInRange(Transform characterTransform, LayerMask targetMask)
+    public Collider2D[] GetHitsInRange(Transform characterTransform, LayerMask targetMask)
     {
         return Physics2D.OverlapCircleAll(characterTransform.position, range, targetMask.value);// check if .value is what overlay wants
+    }
+
+    protected void DamageTarget(HealthComponent targetHealth, StatManager statManager)
+    {
+        targetHealth.TakeDamage(power + statManager.GetCalculatedStat(StatType.AttackPower));
     }
 }
