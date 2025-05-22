@@ -83,6 +83,8 @@ public class HealthComponent : MonoBehaviour
 
         if (currentHealth > maxHealth) 
             currentHealth = maxHealth;
+
+        isDead = false;
     }
 
     bool HandleInvincibilityHits()
