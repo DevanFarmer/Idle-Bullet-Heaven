@@ -14,6 +14,7 @@ public class StatManager : MonoBehaviour
     #region Stats
     #region Structs
     // if i want to separate stats so each character only has the stats they use then would needa use classes instead
+    [System.Serializable]
     struct Stats
     {
         public float Health;
@@ -27,9 +28,9 @@ public class StatManager : MonoBehaviour
         // Add as needed
     }
 
-    Stats baseStats = new Stats();
-    Stats flatBonusStats = new Stats();
-    Stats percentageBonusStats = new Stats();
+    [SerializeField] Stats baseStats = new Stats();
+    [SerializeField] Stats flatBonusStats = new Stats();
+    [SerializeField] Stats percentageBonusStats = new Stats();
     #endregion
 
     #region Setting Base Stats
@@ -107,7 +108,7 @@ public class StatManager : MonoBehaviour
                 return baseStats.InvincibilityHits;
         }
 
-        Debug.Log("StatType was not found for CalculatedStat");
+        Debug.Log($"StatType was not found for CalculatedStat. StatType: {statType}");
         return -1;
     }
 
@@ -118,17 +119,22 @@ public class StatManager : MonoBehaviour
         // if percentage 0 just return base + flat to stop it from setting stat to 0,
         if (percentage == 0) return statValue;
         // if percentage is negative, while subtract from base + flat
-        return statValue + (statValue * percentage);
+        return statValue + (statValue * (percentage / 100f));
     }
 
-    // GetBase, GetFlat, GetPercentage
+    // Makes GetBase, GetFlat, GetPercentage methods
     #endregion
     #endregion
 
     #region Level Up
-    public void LevelUp()
+    public void LevelUp(LevelUpStats levelUpStats) // take in a so that stores the upgraded stats
     {
-        Debug.Log("Player leveled up!");
+        Debug.Log($"{gameObject.name} leveled up!");
+        foreach (StatModifier levelUp in levelUpStats.LevelUpStatModifiers)
+        {
+            // could make another struct to store level up stats
+            ApplyModifier(levelUp);
+        }
     }
     #endregion
 }

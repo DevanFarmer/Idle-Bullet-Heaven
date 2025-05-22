@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
@@ -21,18 +22,32 @@ public class ExperienceManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] int level;
+    [SerializeField] int maxLevel;
+
     [SerializeField] float totalExperience;
     [SerializeField] float nextLevelUp;
 
     StatManager playerStatManager;
 
+    [SerializeField] List<LevelUpStats> levelUpStats = new();
+
     private void Start()
     {
+        level = 0;
+        maxLevel = levelUpStats.Count;
         playerStatManager = GameManager.Instance.GetPlayerStatManager();
     }
 
+    bool notificationSent = false;
     public void GainExp(float exp)
     {
+        if (level >= maxLevel)
+        {
+            if (!notificationSent) { Debug.Log("Player is max level! Cannot gain more exp!"); notificationSent = true; }
+            return;
+        }
+
         totalExperience += exp;
         if (totalExperience >= nextLevelUp)
         {
@@ -43,8 +58,10 @@ public class ExperienceManager : MonoBehaviour
     void LevelUp()
     {
         // Call StatManager LevelUp
-        // playerStatManager.LevelUp();
+        playerStatManager.LevelUp(levelUpStats[level]);
+        level++;
 
         // Set nextLevelUp amount
+        nextLevelUp *= 2f;
     }
 }

@@ -531,7 +531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalExperience: 0
-  nextLevelUp: 0
+  nextLevelUp: 10
+  levelUpStats:
+  - {fileID: 11400000, guid: 8e616435ebf42d340b366d1885465923, type: 2}
 --- !u!4 &602964986
 Transform:
   m_ObjectHideFlags: 0
