@@ -44,4 +44,9 @@ public class MovementComponent : MonoBehaviour, ITargetObserver
     {
         this.targetPos = target;
     }
+
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
 }
