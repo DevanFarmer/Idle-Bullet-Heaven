@@ -873,7 +873,7 @@ MonoBehaviour:
   minSpawnTime: 2
   maxSpawnTime: 5
   canSpawnHoard: 1
-  hoardChance: 50
+  hoardChance: 5
   hoardCheckTime: 2
   minHoardSpawns: 5
   maxHoardSpawns: 10
