@@ -8,7 +8,7 @@ public class PeriodicSpawner : Perk
     
     public float minSpawnTime;
     public float maxSpawnTime;
-    private float lastSpawnTime;
+    private float lastSpawnTime; // move either to OnUpdate as a parameter or 
     private float spawnTime;
 
     public float minSpawnRange;
@@ -30,6 +30,7 @@ public class PeriodicSpawner : Perk
         {
             HandleSpawns(owner.transform.position);
             SetSpawnTime();
+            lastSpawnTime = Time.time;
         }
     }
 
