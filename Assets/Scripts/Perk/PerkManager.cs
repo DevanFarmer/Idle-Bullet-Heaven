@@ -25,8 +25,9 @@ public class PerkManager : MonoBehaviour
 
     public void GainPerk(Perk perk)
     {
-        perkList.Add(perk);
-        perk.OnEquip(gameObject);
+        Perk runtimePerk = Instantiate(perk);
+        perkList.Add(runtimePerk);
+        runtimePerk.OnEquip(gameObject);
     }
 
     public void RemovePerk(Perk perk)
