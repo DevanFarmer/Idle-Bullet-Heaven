@@ -926,7 +926,7 @@ MonoBehaviour:
   checkDelay: 5
   waveLevel: 0
   maxWaveLevel: 0
-  hoardData: {fileID: 11400000, guid: ec30260da868df9489c0ec0b2d76ff79, type: 2}
+  hoardData: {fileID: 0}
 --- !u!4 &1208808951
 Transform:
   m_ObjectHideFlags: 0

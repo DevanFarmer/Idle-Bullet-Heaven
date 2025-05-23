@@ -19,3 +19,4 @@ MonoBehaviour:
   maxSingleSpawn: 1
   minSpawnTime: 2
   maxSpawnTime: 5
+  hoardData: {fileID: 11400000, guid: ec30260da868df9489c0ec0b2d76ff79, type: 2}
