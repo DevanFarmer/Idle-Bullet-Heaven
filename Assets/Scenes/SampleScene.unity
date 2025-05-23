@@ -923,13 +923,10 @@ MonoBehaviour:
   maxSpawnTime: 0
   enemyWaves:
   - {fileID: 11400000, guid: ce9136ae17587814aa8c220ec78fb2d4, type: 2}
-  - {fileID: 11400000, guid: 07fcd9e6f5d0fd84fac8bc78348f6c2a, type: 2}
   checkDelay: 5
-  canSpawnHoard: 0
-  hoardChance: 5
-  hoardCheckTime: 2
-  minHoardSpawns: 5
-  maxHoardSpawns: 10
+  waveLevel: 0
+  maxWaveLevel: 0
+  hoardData: {fileID: 11400000, guid: ec30260da868df9489c0ec0b2d76ff79, type: 2}
 --- !u!4 &1208808951
 Transform:
   m_ObjectHideFlags: 0

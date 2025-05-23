@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy Wave")]
+[CreateAssetMenu(menuName = "Enemy Spawning/Enemy Wave")]
 public class EnemyWave : ScriptableObject
 {
     [Header("Threshold")]
@@ -18,5 +18,6 @@ public class EnemyWave : ScriptableObject
     public float minSpawnTime;
     public float maxSpawnTime;
 
-    // Store hoard level scriptable object, which has a bool for if can spawn hoardes
+    [Header("Hoard Data")]
+    public HoardData hoardData;
 }

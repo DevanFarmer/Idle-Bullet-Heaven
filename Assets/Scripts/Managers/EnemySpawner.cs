@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    // could remove local variables and only use wave data
+
     [SerializeField] List<EnemySpawnData> enemies = new List<EnemySpawnData>();
 
     [SerializeField] float spawnOffset;
@@ -23,14 +25,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int waveLevel; // will never be max level since starts at 0, this is fine as it will run the max wave
     [SerializeField] int maxWaveLevel;
     GameTimeManager gameTimeManager;
-    
+
 
     [Header("Hoardes")] // make scriptable object with these stats
-    [SerializeField] bool canSpawnHoard;
-    [SerializeField, Range(1, 100)] float hoardChance;
-    [SerializeField] float hoardCheckTime;
-    [SerializeField] int minHoardSpawns;
-    [SerializeField] int maxHoardSpawns;
+    [SerializeField] HoardData hoardData;
     float lastHoardTime;
     int hoardRoll;
 
@@ -65,14 +63,14 @@ public class EnemySpawner : MonoBehaviour
             SetSpawnTime();
         }
 
-        if (canSpawnHoard)
+        if (hoardData.canSpawnHoard)
         {
-            if (lastHoardTime + hoardCheckTime <= Time.time)
+            if (lastHoardTime + hoardData.hoardCheckTime <= Time.time)
             {
                 hoardRoll = Random.Range(0, 101);
-                if (hoardRoll <= hoardChance)
+                if (hoardRoll <= hoardData.hoardChance)
                 {
-                    HandleEnemySpawns(minHoardSpawns, maxHoardSpawns); // can make a method to bunch hoard
+                    HandleEnemySpawns(hoardData.minHoardSpawns, hoardData.maxHoardSpawns); // can make a method to bunch hoard
                 }
                 lastHoardTime = Time.time;
             }
@@ -188,6 +186,7 @@ public class EnemySpawner : MonoBehaviour
         maxSpawnTime = enemyWave.maxSpawnTime;
 
         // hoard settings
+        hoardData = enemyWave.hoardData;
 
         waveLevel++;
     }
