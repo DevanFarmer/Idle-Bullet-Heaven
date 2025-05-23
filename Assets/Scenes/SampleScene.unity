@@ -917,11 +917,15 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 0e0e5bfd5dc2a814d849834c031a5cab, type: 2}
   spawnOffset: 0
-  minSingleSpawn: 1
-  maxSingleSpawn: 1
-  minSpawnTime: 2
-  maxSpawnTime: 5
-  canSpawnHoard: 1
+  minSingleSpawn: 0
+  maxSingleSpawn: 0
+  minSpawnTime: 0
+  maxSpawnTime: 0
+  enemyWaves:
+  - {fileID: 11400000, guid: ce9136ae17587814aa8c220ec78fb2d4, type: 2}
+  - {fileID: 11400000, guid: 07fcd9e6f5d0fd84fac8bc78348f6c2a, type: 2}
+  checkDelay: 5
+  canSpawnHoard: 0
   hoardChance: 5
   hoardCheckTime: 2
   minHoardSpawns: 5

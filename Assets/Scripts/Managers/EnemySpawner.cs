@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,9 +14,16 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Times")]
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
-
     private float lastSpawnTime;
     private float spawnTime;
+
+    [Header("Enemy Waves")]
+    [SerializeField] List<EnemyWave> enemyWaves = new();
+    [SerializeField] float checkDelay;
+    [SerializeField] int waveLevel; // will never be max level since starts at 0, this is fine as it will run the max wave
+    [SerializeField] int maxWaveLevel;
+    GameTimeManager gameTimeManager;
+    
 
     [Header("Hoardes")] // make scriptable object with these stats
     [SerializeField] bool canSpawnHoard;
@@ -32,9 +40,19 @@ public class EnemySpawner : MonoBehaviour
     {
         cam = Camera.main;
 
+        gameTimeManager = GameTimeManager.Instance;
+
+        waveLevel = -1; // set to 0 since will increase eave level on initial levelup
+        maxWaveLevel = enemyWaves.Count;
+
         lastSpawnTime = Time.time;
         lastHoardTime = Time.time;
         hoardRoll = 1000;
+
+        LevelUpEnemies(enemyWaves[0]);
+
+        StartCoroutine(HandleWaveChecks());
+        
         SetSpawnTime();
     }
 
@@ -138,5 +156,39 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return new Vector3(xPos, yPos, 0f);
+    }
+
+    // use a coroutine with a delay to stop checking every frame
+    IEnumerator HandleWaveChecks() // could start this with new threshold but then does not account for pausing time
+    {
+        while (waveLevel + 1 < maxWaveLevel)
+        {
+            yield return new WaitForSeconds(checkDelay);
+            CheckIfShouldLevelUp();
+        }
+        Debug.Log("Reached Max Enemy Wave!");
+    }
+
+    void CheckIfShouldLevelUp() // checks if max wave in coroutine
+    {
+        if (gameTimeManager.GetTimeElapsed() >= enemyWaves[waveLevel+1].timeThreshold)
+        {
+            LevelUpEnemies(enemyWaves[waveLevel+1]);
+        }
+    }
+
+    void LevelUpEnemies(EnemyWave enemyWave) // takes in the new list of enemies
+    {
+        enemies = enemyWave.newEnemies;
+
+        minSingleSpawn = enemyWave.minSingleSpawn;
+        maxSingleSpawn = enemyWave.maxSingleSpawn;
+
+        minSpawnTime = enemyWave.minSpawnTime;
+        maxSpawnTime = enemyWave.maxSpawnTime;
+
+        // hoard settings
+
+        waveLevel++;
     }
 }
