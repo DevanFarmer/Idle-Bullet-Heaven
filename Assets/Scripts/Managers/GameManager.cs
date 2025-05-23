@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    GameTimeManager gameTimeManager;
+
     [SerializeField] Transform playerSpawn;
     [SerializeField] GameObject playerPrefab;
 
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
         player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
 
         playerStatManager = player.GetComponent<StatManager>(); // Check if has, throw error if not
+
+        gameTimeManager = GameTimeManager.Instance;
+        gameTimeManager.StartTimer();
     }
 
     public GameObject GetPlayer()
