@@ -5,7 +5,7 @@ public class LifeStealOnEnemyDeath : Perk
 {
     public float lifeStealPower;
     [Tooltip("Flat = raw heal, Percentage = enemy max health * (life steal power / 100).")]
-    public PassiveValueType valueType;
+    public ModifierType valueType;
 
     HealthComponent health;
 
@@ -32,7 +32,7 @@ public class LifeStealOnEnemyDeath : Perk
         HealthComponent enemyHealth = e.Enemy.GetComponent<HealthComponent>();
         float enemyMaxHealth = enemyHealth.GetMaxHealth();
 
-        if (valueType == PassiveValueType.Percentage)
+        if (valueType == ModifierType.Percentage)
         {
             healAmount = enemyMaxHealth * (lifeStealPower / 100f);
         }

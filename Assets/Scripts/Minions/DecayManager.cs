@@ -7,7 +7,7 @@ public class DecayManager : MonoBehaviour
 
     [SerializeField] float decayRate;
     [SerializeField] float decayAmount;
-    [SerializeField] PassiveValueType amountValueType;
+    [SerializeField] ModifierType amountValueType;
 
     float lastDecayTick;
 
@@ -32,7 +32,7 @@ public class DecayManager : MonoBehaviour
     void Decay()
     {
         float amount = decayAmount;
-        if (amountValueType == PassiveValueType.Percentage) amount = health.GetMaxHealth() * (decayAmount / 100f);
+        if (amountValueType == ModifierType.Percentage) amount = health.GetMaxHealth() * (decayAmount / 100f);
         health.TakeDamage(amount, false);
     }
 }

@@ -47,7 +47,7 @@ public class InvincibilityHitsOnLowHealth : Perk
         statManager.ApplyModifier(
             new StatModifier(StatType.InvincibilityHits,
             statManager.GetCalculatedStat(StatType.InvincibilityHits) - invinciblityHits, // dont add more than woudl give
-            PassiveValueType.Flat));
+            ModifierType.Flat));
 
         hasGainedInvincibilityHits = true;
     }

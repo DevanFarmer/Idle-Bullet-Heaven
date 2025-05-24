@@ -8,7 +8,7 @@ public class HealWhileLowHealth : Perk
     public float thresfold;
 
     public float healValue;
-    public PassiveValueType healType;
+    public ModifierType healType;
 
     public float healTick;
 
@@ -36,7 +36,7 @@ public class HealWhileLowHealth : Perk
         if ((health.GetCurrentHealth() / health.GetMaxHealth()) > thresfold) return;
 
         float healAmount = healValue;
-        if (healType == PassiveValueType.Percentage) healAmount = health.GetMaxHealth() * (healValue / 100f);
+        if (healType == ModifierType.Percentage) healAmount = health.GetMaxHealth() * (healValue / 100f);
         health.Heal(healAmount);
 
         lastHealTick = Time.time;

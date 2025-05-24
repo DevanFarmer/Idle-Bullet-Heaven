@@ -51,7 +51,7 @@ public abstract class Perk : ScriptableObject
         foreach (StatModifier statModifier in statModifiers)
         {
             newValue = statModifier.value * modifier;
-            if (statModifier.bonusType == PassiveValueType.Percentage) newValue /= 100;
+            if (statModifier.bonusType == ModifierType.Percentage) newValue /= 100;
             ApplyModifier(new StatModifier(statModifier.targetStat, 
                                            newValue,
                                            statModifier.bonusType));
@@ -68,7 +68,7 @@ public abstract class Perk : ScriptableObject
         foreach (StatModifier statModifier in statModifiers)
         {
             newValue = statModifier.value * modifier;
-            if (statModifier.bonusType == PassiveValueType.Percentage) newValue /= 100;
+            if (statModifier.bonusType == ModifierType.Percentage) newValue /= 100;
             ApplyModifier(new StatModifier(statModifier.targetStat,
                                            newValue *= -1,
                                            statModifier.bonusType));
@@ -101,7 +101,7 @@ public abstract class Perk : ScriptableObject
             string sign = mod.value >= 0 ? "+" : "-";
             if (effectDescription != "") effectDescription += "\n"; // Only break line when adding a stat, ignores first
             effectDescription += $"<color={color}>{sign}{Mathf.Abs(mod.value)}</color>"; // Adds value, adds color
-            if (mod.bonusType == PassiveValueType.Percentage) effectDescription += "%"; // shows if percentage
+            if (mod.bonusType == ModifierType.Percentage) effectDescription += "%"; // shows if percentage
             effectDescription += $" {mod.targetStat}"; // Adds stat type
         }
     }

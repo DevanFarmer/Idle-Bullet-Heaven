@@ -5,7 +5,7 @@ public class LifestealOnAttack : Perk
 {
     public float lifeStealPower;
     [Tooltip("Flat = raw heal, Percentage = damage dealt * (life steal power / 100).")]
-    public PassiveValueType valueType;
+    public ModifierType valueType;
 
     HealthComponent health;
 
@@ -32,7 +32,7 @@ public class LifestealOnAttack : Perk
 
         float damageDealt = e.Damage;
 
-        if (valueType == PassiveValueType.Percentage)
+        if (valueType == ModifierType.Percentage)
         {
             healAmount = damageDealt * (lifeStealPower / 100f);
         }

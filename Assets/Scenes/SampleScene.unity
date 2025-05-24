@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpawn: {fileID: 27891277}
   playerPrefab: {fileID: 5960760974170360659, guid: 2b86bf2c68acc454ebdc37151b14aa87, type: 3}
+  playerPerks:
+  - {fileID: 11400000, guid: 5c0c8070e95bc7d45a83848bc92243f6, type: 2}
 --- !u!4 &27891277
 Transform:
   m_ObjectHideFlags: 0

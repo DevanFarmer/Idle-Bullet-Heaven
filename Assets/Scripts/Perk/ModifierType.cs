@@ -1,4 +1,4 @@
-public enum PassiveValueType
+public enum ModifierType
 {
     Flat, 
     Percentage

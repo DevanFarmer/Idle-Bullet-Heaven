@@ -4,7 +4,7 @@ public class StatModifierButLifeDrain : Perk
 {
     public float healthDrain;
     [Tooltip("Flat = raw damage; Percentage = percentage of current max health")]
-    public PassiveValueType drainType;
+    public ModifierType drainType;
 
     public float drainTick;
     float lastDrainTick;
@@ -34,7 +34,7 @@ public class StatModifierButLifeDrain : Perk
     {
         float damageAmount = healthDrain;
 
-        if (drainType == PassiveValueType.Percentage)
+        if (drainType == ModifierType.Percentage)
         {
             damageAmount = health.GetMaxHealth() * (healthDrain / 100f);
         }

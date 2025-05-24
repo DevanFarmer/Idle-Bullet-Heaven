@@ -61,10 +61,10 @@ public class StatManager : MonoBehaviour
     {
         switch (modifier.bonusType)
         {
-            case PassiveValueType.Flat:
+            case ModifierType.Flat:
                 ModifyStat(ref flatBonusStats, modifier.targetStat, modifier.value);
                 break;
-            case PassiveValueType.Percentage:
+            case ModifierType.Percentage:
                 ModifyStat(ref percentageBonusStats, modifier.targetStat, modifier.value);
                 break;
         }
