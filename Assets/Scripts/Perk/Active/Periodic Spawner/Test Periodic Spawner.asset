@@ -17,8 +17,8 @@ MonoBehaviour:
   formattedDescription: 
   effectDescription: 
   statModifiers: []
-  spawnPrefab: {fileID: 0}
-  minSpawnTime: 0
-  maxSpawnTime: 0
-  minSpawnRange: 0
-  maxSpawnRange: 0
+  spawnPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
+  minSpawnTime: 1
+  maxSpawnTime: 2
+  minSpawnRange: 2
+  maxSpawnRange: 2
