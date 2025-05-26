@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hoard Data 00
   m_EditorClassIdentifier: 
   canSpawnHoard: 1
-  hoardChance: 50
+  hoardChance: 5
   hoardCheckTime: 5
   minHoardSpawns: 5
   maxHoardSpawns: 10

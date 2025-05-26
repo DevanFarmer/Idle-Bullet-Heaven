@@ -19,6 +19,7 @@ public class HealthComponent : MonoBehaviour
 
     StatManager statManager;
 
+    public Action<float, Transform> onHit;
     public Action onDeath;
 
     bool isDead;
@@ -59,6 +60,8 @@ public class HealthComponent : MonoBehaviour
         currentHealth -= damage;
 
         HandleCharacterHitEvents(damage);
+
+        onHit?.Invoke(damage, transform);
 
         if (currentHealth <= 0)
         {

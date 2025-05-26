@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -31,6 +32,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] HoardData hoardData;
     float lastHoardTime;
     int hoardRoll;
+
+    [Header("VFX")]
+    [SerializeField] GameObject damagePopup;
 
     Camera cam;
 
@@ -105,6 +109,11 @@ public class EnemySpawner : MonoBehaviour
 
         health.onDeath += expGiver.GiveExperience;
         health.onDeath += () => { Destroy(enemy); };
+
+        health.onHit += (damage, hitGameObject) => {
+            GameObject popup = Instantiate(damagePopup, hitGameObject.position, Quaternion.identity);
+            popup.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+        };
 
         // target component handles setting target
     }

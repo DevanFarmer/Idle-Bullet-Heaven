@@ -150,8 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpawn: {fileID: 27891277}
   playerPrefab: {fileID: 5960760974170360659, guid: 2b86bf2c68acc454ebdc37151b14aa87, type: 3}
-  playerPerks:
-  - {fileID: 11400000, guid: 5c0c8070e95bc7d45a83848bc92243f6, type: 2}
+  playerPerks: []
 --- !u!4 &27891277
 Transform:
   m_ObjectHideFlags: 0
@@ -929,6 +928,7 @@ MonoBehaviour:
   waveLevel: 0
   maxWaveLevel: 0
   hoardData: {fileID: 0}
+  damagePopup: {fileID: 3340017294564418758, guid: 199a884419a3a2b4da73af2ea84ddc78, type: 3}
 --- !u!4 &1208808951
 Transform:
   m_ObjectHideFlags: 0
