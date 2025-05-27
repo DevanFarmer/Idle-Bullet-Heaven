@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShieldComponent : MonoBehaviour
 {
-    HealthComponent healthComponent;
+    HealthComponent healthComponent; // could handle shield stuff in here instead of using healthComponent
     Collider2D shieldCollider;
     SpriteRenderer gfx;
     [SerializeField] Collider2D playerCollider;
@@ -11,11 +11,15 @@ public class ShieldComponent : MonoBehaviour
     [SerializeField] float regenTick;
     [SerializeField] float regenAmount;
 
+    IStats statManager;
+
     bool regenShield;
     float lastHealTick;
 
     private void Start()
     {
+        statManager = GetComponentInParent<IStats>();
+
         shieldCollider = GetComponent<Collider2D>();
 
         healthComponent = GetComponent<HealthComponent>();
@@ -45,6 +49,7 @@ public class ShieldComponent : MonoBehaviour
         shieldCollider.enabled = true;
         playerCollider.enabled = false; // disable while shield to prevent aoe damage
         gfx.enabled = true;
+        healthComponent.SetMaxHealth(statManager.GetCalculatedStat(StatType.ShieldHealth));
     }
 
     void OnShieldBroken(ShieldBroke e)

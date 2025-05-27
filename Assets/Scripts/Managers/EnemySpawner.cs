@@ -104,7 +104,12 @@ public class EnemySpawner : MonoBehaviour
         if (expGiver == null) { expGiver = enemy.AddComponent<ExperienceGiver>(); }
         expGiver.SetExpPoints(enemyCharacter.expPoints);
 
+        IStats statManager = enemy.GetComponent<IStats>();
+        if (statManager == null) { statManager = enemy.AddComponent<StatManager>(); }
+        statManager.InitializeCharacterStats(enemyCharacter.stats);
+
         HealthComponent health = enemy.GetComponent<HealthComponent>();
+        health.SetStatManager(statManager);
         if (health == null) { Debug.Log($"No HealthComponent found on {enemy.name}. Empty HealthComponent Added!"); health = enemy.AddComponent<HealthComponent>(); }
 
         health.onDeath += expGiver.GiveExperience;

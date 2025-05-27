@@ -11,7 +11,7 @@ public abstract class BaseAttack : ScriptableObject
         
     }
 
-    public virtual void Attack(Transform character, Transform target, StatManager statManager) // Use Weapon?
+    public virtual void Attack(Transform character, Transform target, IStats statManager) // Use Weapon?
     {
         // use weapon
     }
@@ -28,7 +28,7 @@ public abstract class BaseAttack : ScriptableObject
         return Physics2D.OverlapCircleAll(characterTransform.position, range, targetMask.value);// check if .value is what overlay wants
     }
 
-    protected float GetDamage(StatManager statManager)
+    protected float GetDamage(IStats statManager)
     {
         return power + statManager.GetCalculatedStat(StatType.AttackPower);
     }

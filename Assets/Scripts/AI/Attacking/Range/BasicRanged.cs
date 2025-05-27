@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Basic Ranged", menuName = "Attack/Ranged/Basic Ranged")]
 public class BasicRanged : BaseAttack
 {
-    public GameObject projectileprefab;
+    public GameObject projectilePrefab;
     public float moveSpeed;
 
     public override void Equip(Transform character)
@@ -11,9 +11,9 @@ public class BasicRanged : BaseAttack
         // character.GetComponent<TargetComponent>().SetDetectionRange(range);
     }
 
-    public override void Attack(Transform character, Transform target, StatManager statManager)
+    public override void Attack(Transform character, Transform target, IStats statManager)
     {
-        GameObject projectile = Instantiate(projectileprefab, character.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, character.position, Quaternion.identity);
 
         // Set damage component
         DamageComponent dmgComp = projectile.GetComponent<DamageComponent>();

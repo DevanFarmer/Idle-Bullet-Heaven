@@ -11,4 +11,5 @@ public class EnemySpawnData : ScriptableObject
     public float expPoints;
 
     // stats
+    public CharacterStats stats;
 }

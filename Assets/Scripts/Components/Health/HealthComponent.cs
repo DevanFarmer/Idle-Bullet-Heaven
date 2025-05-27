@@ -17,7 +17,7 @@ public class HealthComponent : MonoBehaviour
     [Header("Other")]
     [SerializeField] bool canHealAfterDeath;
 
-    StatManager statManager;
+    IStats statManager;
 
     public Action<float, Transform> onHit;
     public Action onDeath;
@@ -28,7 +28,7 @@ public class HealthComponent : MonoBehaviour
     {
         isDead = false;
 
-        statManager = GetComponent<StatManager>(); // check if null
+        if (statManager == null) statManager = GetComponent<IStats>(); // check if null
         UpdateMaxHealth();
 
         switch (characterType) 
@@ -101,6 +101,7 @@ public class HealthComponent : MonoBehaviour
         return false;
     }
 
+    // should probably check if it the character that was hit else everything gonna update every time hit is published
     void OnPlayerStatModified(PlayerStatModifiedEvent e)
     {
         if (e.statType != StatType.Health) return;
@@ -125,7 +126,18 @@ public class HealthComponent : MonoBehaviour
         UpdateMaxHealth();
     }
 
-    void UpdateMaxHealth()
+    // making these public is a temporary bandage fixes
+    public void SetStatManager(IStats statManager)
+    {
+        this.statManager = statManager;
+    }
+
+    public void SetMaxHealth(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+    }
+
+    public void UpdateMaxHealth()
     {
         if (statManager == null) 
         {

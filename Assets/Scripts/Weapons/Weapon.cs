@@ -16,11 +16,11 @@ public abstract class Weapon : ScriptableObject
 
     protected float lastAttackTime;
 
-    protected StatManager statManager;
+    protected IStats statManager;
 
     public virtual void OnObtained(GameObject owner)
     {
-        statManager = owner.GetComponent<StatManager>();
+        statManager = owner.GetComponent<IStats>();
         lastAttackTime = Time.time;
     }
 

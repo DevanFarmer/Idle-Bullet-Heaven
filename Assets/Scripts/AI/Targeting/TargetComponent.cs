@@ -11,13 +11,17 @@ public class TargetComponent : MonoBehaviour
 
     List<ITargetObserver> targetobservers = new List<ITargetObserver>();
 
+    IStats statManager;
+
     private void Start()
     {
+        statManager = GetComponent<IStats>();
         GetTargetObservers();
     }
 
     void Update()
     {
+        SetDetectionRange(statManager.GetCalculatedStat(StatType.DetectionRange));
         if (target != null && targetHealth.IsAlive()) return;
 
         GetNewTarget(transform, targetMask);
@@ -52,6 +56,7 @@ public class TargetComponent : MonoBehaviour
 
     public void SetDetectionRange(float range)
     {
+        if (range < 0) { Debug.LogWarning($"Tried to updated detection range on {gameObject.name} but value passed was less than zero!"); return; }
         detectionRange = range;
     }
 

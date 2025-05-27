@@ -24,6 +24,7 @@ public class WeaponManager : MonoBehaviour
 
     public void ObtainWeapon(Weapon weapon)
     {
+        // instantiate first!!!
         weaponList.Add(weapon);
         weapon.OnObtained(gameObject);
     }

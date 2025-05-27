@@ -19,12 +19,12 @@ public abstract class Perk : ScriptableObject
     public List<StatModifier> statModifiers = new List<StatModifier>();
     protected bool hasActiveLogic = true;
     
-    protected StatManager statManager;
+    protected IStats statManager;
 
     // Pass owner for any logic that might need it
     public virtual void OnEquip(GameObject owner)
     {
-        statManager = owner.GetComponent<StatManager>(); // Can have an initializer method that always runs but cannot be overridden
+        statManager = owner.GetComponent<IStats>(); // Can have an initializer method that always runs but cannot be overridden
 
         ApplyStatModifiers();
     }

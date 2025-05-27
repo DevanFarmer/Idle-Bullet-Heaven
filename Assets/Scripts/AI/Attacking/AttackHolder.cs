@@ -14,11 +14,11 @@ public class AttackHolder : MonoBehaviour, ITargetObserver
     bool inRange;
 
     Transform target; // store in a middle man class since attack and movement need it
-    StatManager stats;
+    IStats stats;
 
     void Start()
     {
-        stats = GetComponent<StatManager>();
+        stats = GetComponent<IStats>();
 
         attack.Equip(transform);
         lastAttackTime = Time.time;

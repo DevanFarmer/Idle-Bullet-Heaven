@@ -26,18 +26,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform playerSpawn;
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] CharacterStats playerStats;
     [SerializeField] List<Perk> playerPerks = new();
 
     private GameObject player;
-    private StatManager playerStatManager;
+    private IStats playerStatManager;
     private PerkManager playerPerkManager;
 
     void Start()
     {
-        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
-
-        playerStatManager = player.GetComponent<StatManager>(); // Check if has, throw error if not
-        playerPerkManager = player.GetComponent<PerkManager>();
+        SpawnPlayer();
 
         gameTimeManager = GameTimeManager.Instance;
         gameTimeManager.StartTimer();
@@ -50,9 +48,24 @@ public class GameManager : MonoBehaviour
         return player;
     }
 
-    public StatManager GetPlayerStatManager()
+    public IStats GetPlayerStatManager()
     {
         return playerStatManager;
+    }
+    // do in own player spawner script
+    void SpawnPlayer()
+    {
+        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
+
+        playerStatManager = player.GetComponent<IStats>(); // Check if has, throw error if not
+        playerPerkManager = player.GetComponent<PerkManager>();
+
+        InitializePlayerStats();
+    }
+
+    void InitializePlayerStats()
+    {
+        playerStatManager.InitializeCharacterStats(playerStats);
     }
 
     void InitializePerks()

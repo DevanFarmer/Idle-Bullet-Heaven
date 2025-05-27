@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test MinionSpawnData
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
-  stats: {fileID: 11400000, guid: a68922fdd903c28448e4d3fc499db879, type: 2}
+  stats: {fileID: 11400000, guid: 0ab9366225a8e164a9a9c7e8366f900a, type: 2}
   spawnCooldown: 0
   perks:
   - {fileID: 11400000, guid: a8211d80aa7cb5e4d9a81648f6163c6f, type: 2}

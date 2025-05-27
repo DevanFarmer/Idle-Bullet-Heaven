@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StatManager : MonoBehaviour
+public class OldStatManager : MonoBehaviour
 {
     // Make this a base class or make stat managers composite components
     
@@ -34,8 +34,8 @@ public class StatManager : MonoBehaviour
     #endregion
 
     #region Setting Base Stats
-    [SerializeField] CharacterStats characterStats;
-    public void SetCharacterStats(CharacterStats characterStats)
+    [SerializeField] OldCharacterStats characterStats;
+    public void SetCharacterStats(OldCharacterStats characterStats)
     {
         this.characterStats = characterStats;
         SetBaseStats();
@@ -86,9 +86,9 @@ public class StatManager : MonoBehaviour
             case StatType.InvincibilityHits:
                 stats.InvincibilityHits += (int)value;
                 break;
-            case StatType.MinionAttackSpeed:
-                stats.MinionAttackSpeed += value;
-                break;
+            //case StatType.MinionAttackSpeed:
+            //    stats.MinionAttackSpeed += value;
+            //    break;
         }
     }
     #endregion
@@ -127,6 +127,7 @@ public class StatManager : MonoBehaviour
     #endregion
 
     #region Level Up
+    // can move to own script
     public void LevelUp(LevelUpStats levelUpStats) // take in a so that stores the upgraded stats
     {
         Debug.Log($"{gameObject.name} leveled up!");

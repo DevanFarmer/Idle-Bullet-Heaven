@@ -15,5 +15,5 @@ MonoBehaviour:
   power: 1
   attackSpeed: 0.5
   range: 3
-  projectileprefab: {fileID: 2270311724273591898, guid: b6c7b47fbd878504784811fae432d1d3, type: 3}
+  projectilePrefab: {fileID: 2270311724273591898, guid: b6c7b47fbd878504784811fae432d1d3, type: 3}
   moveSpeed: 2

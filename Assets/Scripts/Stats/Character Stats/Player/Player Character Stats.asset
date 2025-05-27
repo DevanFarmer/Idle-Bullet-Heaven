@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233861690f2258448a2032f00d701cf2, type: 3}
+  m_Name: Player Character Stats
+  m_EditorClassIdentifier: 
+  statTypes: "1.\tHealth\nBase Value: 100\n2.\tAttackPower\nBase Value: 5\n3.\tAttackSpeed\nBase
+    Value: 2\n4.\tCriticalChance\nBase Value: 5\n5.\tAttackRange\nBase Value: 1\n6.\tAttackSize\nBase
+    Value: 1\n7.\tMoveSpeed\nBase Value: 0\n8.\tDetectionRange\nBase Value: 0\n9.\tXPMultiplier\nBase
+    Value: 100\n10.\tInvincibilityHits\nBase Value: 0\n11.\tShieldHealth\nBase Value:
+    10\n12.\tShieldDamage\nBase Value: 0\n13.\tMaxActiveMinions\nBase Value: 4\n14.\tMinionSquadNumber\nBase
+    Value: 4\n15.\tRevives\nBase Value: 1\n16.\tProjectileBounces\nBase Value: 0\n17.\tProjectilePierceNumber\nBase
+    Value: 0"
+  characterStats:
+  - StatType: 0
+    BaseValue: 100
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 1
+    BaseValue: 5
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 2
+    BaseValue: 2
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 3
+    BaseValue: 5
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 4
+    BaseValue: 1
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 5
+    BaseValue: 1
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 6
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 17
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 7
+    BaseValue: 100
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 8
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 9
+    BaseValue: 10
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 10
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 11
+    BaseValue: 4
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 12
+    BaseValue: 4
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 13
+    BaseValue: 1
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 14
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
+  - StatType: 15
+    BaseValue: 0
+    FlatBonusValue: 0
+    PercentBonusValue: 0
