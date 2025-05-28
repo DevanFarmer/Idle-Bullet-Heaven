@@ -26,6 +26,7 @@ public class PerkManager : MonoBehaviour
     public void GainPerk(Perk perk)
     {
         Perk runtimePerk = Instantiate(perk);
+        runtimePerk.name = perk.name; // removes the added "(Clone)" suffix
         perkList.Add(runtimePerk);
         runtimePerk.OnEquip(gameObject);
     }
@@ -34,5 +35,10 @@ public class PerkManager : MonoBehaviour
     {
         perk.OnUnEquip(gameObject);
         perkList.Remove(perk);
+    }
+
+    public List<Perk> GetPerkList()
+    {
+        return perkList;
     }
 }

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d8ebf0726e26944ac59d21db08cc71, type: 3}
   m_Name: Test Periodic Spawner
   m_EditorClassIdentifier: 
-  perkName: 
+  perkName: Test Periodic Spawner
   description: 
   formattedDescription: 
   effectDescription: 
   statModifiers: []
   spawnPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
-  minSpawnTime: 1
-  maxSpawnTime: 2
-  minSpawnRange: 2
-  maxSpawnRange: 2
+  minSpawnTime: 5
+  maxSpawnTime: 10
+  minSpawnRange: 5
+  maxSpawnRange: 7
