@@ -13,7 +13,7 @@ public class TargetComponent : MonoBehaviour
 
     IStats statManager;
 
-    private void Start()
+    private void Awake()
     {
         statManager = GetComponent<IStats>();
         GetTargetObservers();
