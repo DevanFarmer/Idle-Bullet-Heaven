@@ -15,7 +15,7 @@ MonoBehaviour:
   statTypes: "1.\tHealth\nBase Value: 15\n2.\tAttackPower\nBase Value: 5\n3.\tAttackSpeed\nBase
     Value: 1,5\n4.\tCriticalChance\nBase Value: 15\n5.\tAttackRange\nBase Value:
     1\n6.\tAttackSize\nBase Value: 0\n7.\tMoveSpeed\nBase Value: 1\n8.\tDetectionRange\nBase
-    Value: 20"
+    Value: 50"
   characterStats:
   - StatType: 0
     BaseValue: 15
@@ -46,6 +46,6 @@ MonoBehaviour:
     FlatBonusValue: 0
     PercentBonusValue: 0
   - StatType: 17
-    BaseValue: 20
+    BaseValue: 50
     FlatBonusValue: 0
     PercentBonusValue: 0
