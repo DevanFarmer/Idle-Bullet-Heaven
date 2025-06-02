@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32d8ebf0726e26944ac59d21db08cc71, type: 3}
-  m_Name: Test Periodic Spawner
+  m_Name: Test Upgrade Periodic Spawner
   m_EditorClassIdentifier: 
-  perkName: Test Periodic Spawner
+  perkName: Test Upgrade Periodic Spawner
   description: 
   formattedDescription: 
   effectDescription: 
-  upgrade: {fileID: 11400000, guid: ef359ae0a6c17584dab355e7e2e02d38, type: 2}
+  upgrade: {fileID: 0}
   statModifiers: []
-  spawnPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
+  spawnPrefab: {fileID: 2536246327904255817, guid: c091fcef820ba2c49ac6b693cf462010, type: 3}
   minSpawnTime: 5
   maxSpawnTime: 10
   minSpawnRange: 5

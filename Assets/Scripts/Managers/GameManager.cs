@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Perk perk in playerPerks)
         {
-            playerPerkManager.GainPerk(perk);
+            playerPerkManager.GainPerk(perk, false);
         }
     }
 }

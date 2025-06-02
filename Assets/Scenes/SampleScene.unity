@@ -713,7 +713,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAvailablePerks:
   - {fileID: 11400000, guid: 5c0c8070e95bc7d45a83848bc92243f6, type: 2}
-  - {fileID: 11400000, guid: 055c2ad1b0b51b849bc7e28420ca88a6, type: 2}
 --- !u!4 &720596855
 Transform:
   m_ObjectHideFlags: 0

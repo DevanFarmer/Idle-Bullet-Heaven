@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Perk : ScriptableObject
@@ -13,6 +12,9 @@ public abstract class Perk : ScriptableObject
     public string formattedDescription;
     public string effectDescription;
 
+    [Header("Upgrading")]
+    public Perk upgrade;
+
     // All weapons now inherit this?
     // Rather Create a Passive child that has this, if weapon needs just special case for it then
     [Header("Passive Info")]
@@ -20,11 +22,13 @@ public abstract class Perk : ScriptableObject
     protected bool hasActiveLogic = true;
     
     protected IStats statManager;
+    protected PerkManager perkManager;
 
     // Pass owner for any logic that might need it
     public virtual void OnEquip(GameObject owner)
     {
         statManager = owner.GetComponent<IStats>(); // Can have an initializer method that always runs but cannot be overridden
+        perkManager = owner.GetComponent<PerkManager>();
 
         ApplyStatModifiers();
     }
@@ -83,6 +87,13 @@ public abstract class Perk : ScriptableObject
     public bool HasActiveLogic()
     {
         return hasActiveLogic;
+    }
+
+    public void UpgradePerk() // call when?
+    {
+        Debug.Log($"Perk Manager: {perkManager != null} ; {upgrade != null}");
+        perkManager.GainPerk(upgrade);
+        perkManager.RemovePerk(this);
     }
 
 #if UNITY_EDITOR
