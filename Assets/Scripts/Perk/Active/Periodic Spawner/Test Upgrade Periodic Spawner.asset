@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test Upgrade Periodic Spawner
   m_EditorClassIdentifier: 
   perkName: Test Upgrade Periodic Spawner
-  description: 
-  formattedDescription: 
+  description: Spawn orbit attack
+  formattedDescription: Spawn orbit attack
   effectDescription: 
   upgrade: {fileID: 0}
   statModifiers: []

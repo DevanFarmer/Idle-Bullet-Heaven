@@ -26,7 +26,10 @@ public class PerkManager : MonoBehaviour
     public void GainPerk(Perk perk, bool upgrade = true)
     {
         Perk runtimePerk;
-        if (HasPerk(perk.perkName) && upgrade && perk.upgrade != null)
+        bool hasPerk = HasPerk(perk.perkName), 
+             hasUpgrade = perk.upgrade != null;
+        Debug.Log($"{hasPerk} : {upgrade} : {hasUpgrade}");
+        if (hasPerk && upgrade && hasUpgrade)
         {
             runtimePerk = GetPerkByName(perk.name);
             runtimePerk.UpgradePerk();
@@ -65,11 +68,11 @@ public class PerkManager : MonoBehaviour
         return null;
     }
 
-    bool HasPerk(string name)
+    public bool HasPerk(string name)
     {
         foreach (Perk perk in perkList)
         {
-            if (perk.name == name)
+            if (perk.perkName == name)
             {
                 return true;
             }

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a91b4446e6e998478c490f4240706b0, type: 3}
   m_Name: Test Pause Minion Decay On Kill Streak
   m_EditorClassIdentifier: 
-  perkName: 
-  description: 
-  formattedDescription: 
-  effectDescription: 
+  perkName: Test Pause Minion Decay On Kill Streak
+  description: Pause Minion Decay on Kill Streak
+  upgrade: {fileID: 0}
   statModifiers: []
   enemiesNeededToTrigger: 0
   pauseTime: 0

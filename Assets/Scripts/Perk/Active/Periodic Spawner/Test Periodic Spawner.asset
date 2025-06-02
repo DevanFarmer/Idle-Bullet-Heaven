@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test Periodic Spawner
   m_EditorClassIdentifier: 
   perkName: Test Periodic Spawner
-  description: 
-  formattedDescription: 
+  description: Spawn minion
+  formattedDescription: Spawn minion
   effectDescription: 
   upgrade: {fileID: 11400000, guid: ef359ae0a6c17584dab355e7e2e02d38, type: 2}
   statModifiers: []

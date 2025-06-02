@@ -9,8 +9,11 @@ public class PerkSelector : MonoBehaviour
     [SerializeField] List<Perk> allAvailablePerks = new(); // need a better way to store list of all available perks
     PerkManager playerPerkManager; // use a Observer for getting player, sends player when it is spawned, good for scripts that need player on start
 
+    PerkSelectorUIManager uiManager;
+
     void Start()
     {
+        uiManager = GetComponent<PerkSelectorUIManager>();
         StartCoroutine(Initialize());
     }
 
@@ -23,12 +26,8 @@ public class PerkSelector : MonoBehaviour
         }
         RemoveBasePerksPlayerAlreadyHas();
 
-        List<Perk> perks = GetPerkChoices(3);
-        //foreach (Perk perk in perks)
-        //{
-        //    Debug.Log(perk.name);
-        //}
-        playerPerkManager.GainPerk(perks[0]);
+        List<PerkChoice> perks = GetPerkChoices(3);
+        uiManager.ShowPerkChoices(perks);
     }
 
     void RemoveBasePerksPlayerAlreadyHas() // keeps perks with upgrades
@@ -51,9 +50,10 @@ public class PerkSelector : MonoBehaviour
         }
     }
 
-    List<Perk> GetPerkChoices(int numberOfChoices)
+    List<PerkChoice> GetPerkChoices(int numberOfChoices) // check here if perk is upgrade or new
     {
-        Perk[] choices = new Perk[numberOfChoices];
+        PerkChoice[] choices = new PerkChoice[numberOfChoices];
+        Perk[] perksChosen = new Perk[numberOfChoices];
         bool validPerk;
         int tries, maxTries = 20;
         Perk perk;
@@ -65,10 +65,11 @@ public class PerkSelector : MonoBehaviour
             while (validPerk == false && tries < maxTries)
             {
                 perk = GetRandomPerk();
-                if (!allAvailablePerks.Contains(perk)) validPerk = true;
+                if (!perksChosen.Contains(perk)) validPerk = true; // what is happening here?
                 tries++;
             }
-            choices[i] = perk;
+            choices[i] = GetPerkChoice(perk);
+            perksChosen[i] = perk;
         }
 
         return choices.ToList();
@@ -80,5 +81,26 @@ public class PerkSelector : MonoBehaviour
         return allAvailablePerks[index];
     }
 
+    PerkChoice GetPerkChoice(Perk perk)
+    {
+        if (playerPerkManager.HasPerk(perk.perkName))
+        {
+            return new PerkChoice(perk.upgrade, perk);
+        }
+        else
+        {
+            return new PerkChoice(perk);
+        }
+    }
+
     // for ui on selecting a perk send a PerkSelectedEvent that passes the perk that was selected then remove it from list
+    public void SelectPerk(Perk perk)
+    {
+        playerPerkManager.GainPerk(perk);
+        
+        // remove from list, instead of looping through everything
+        allAvailablePerks.Remove(perk);
+
+        // PerkSelectedEvent
+    }
 }
