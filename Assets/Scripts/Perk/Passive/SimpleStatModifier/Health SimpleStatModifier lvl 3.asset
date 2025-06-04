@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 680b359dd188fac4389a5be2a3ffda61, type: 3}
-  m_Name: Health SimpleStatModifier lvl 2
+  m_Name: Health SimpleStatModifier lvl 3
   m_EditorClassIdentifier: 
-  perkName: Health/Attack Power Modification lvl 2
+  perkName: Health/Attack Power Modification lvl 3
   description: Increases health by <color=green>{0}</color>% and decreases AttackPower
     by <color=red>{1}</color>
-  formattedDescription: Increases health by <color=green>25</color>% and decreases
-    AttackPower by <color=red>-3</color>
-  effectDescription: '<color=green>+25</color>% Health
+  formattedDescription: Increases health by <color=green>40</color>% and decreases
+    AttackPower by <color=red>-5</color>
+  effectDescription: '<color=green>+40</color>% Health
 
-    <color=red>-3</color>
+    <color=red>-5</color>
     AttackPower'
-  prerequisitePerk: {fileID: 11400000, guid: a8211d80aa7cb5e4d9a81648f6163c6f, type: 2}
+  prerequisitePerk: {fileID: 11400000, guid: 9e82c6107133b424491b8317f8b0ae74, type: 2}
   statModifiers:
   - targetStat: 0
-    value: 25
+    value: 40
     bonusType: 1
   - targetStat: 1
-    value: -3
+    value: -5
     bonusType: 0

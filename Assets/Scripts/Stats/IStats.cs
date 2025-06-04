@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public interface IStats
 {
     public void InitializeCharacterStats(CharacterStats baseStats);
@@ -6,5 +8,5 @@ public interface IStats
 
     public float GetCalculatedStat(StatType statType);
 
-    // public void LevelUp(List<StatModifier>?)
+    public void LevelUp(List<StatModifier> levelUpStats);
 }

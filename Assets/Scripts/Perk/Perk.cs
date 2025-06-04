@@ -13,7 +13,7 @@ public abstract class Perk : ScriptableObject
     public string effectDescription;
 
     [Header("Upgrading")]
-    public Perk upgrade;
+    public Perk prerequisitePerk;
 
     // All weapons now inherit this?
     // Rather Create a Passive child that has this, if weapon needs just special case for it then
@@ -29,6 +29,8 @@ public abstract class Perk : ScriptableObject
     {
         statManager = owner.GetComponent<IStats>(); // Can have an initializer method that always runs but cannot be overridden
         perkManager = owner.GetComponent<PerkManager>();
+
+        if (prerequisitePerk != null) perkManager.RemovePerk(prerequisitePerk);
 
         ApplyStatModifiers();
     }
@@ -89,12 +91,6 @@ public abstract class Perk : ScriptableObject
         return hasActiveLogic;
     }
 
-    public void UpgradePerk() // call when?
-    {
-        Debug.Log($"Perk Manager: {perkManager != null} ; {upgrade != null}");
-        perkManager.GainPerk(upgrade);
-        perkManager.RemovePerk(this);
-    }
 
 #if UNITY_EDITOR
     void OnValidate()

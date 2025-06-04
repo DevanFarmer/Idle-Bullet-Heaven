@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perkName: Test Pause Minion Decay On Kill Streak
   description: Pause Minion Decay on Kill Streak
+  formattedDescription: Pause Minion Decay on Kill Streak
+  effectDescription: 
   upgrade: {fileID: 0}
   statModifiers: []
-  enemiesNeededToTrigger: 0
-  pauseTime: 0
+  enemiesNeededToTrigger: 10
+  pauseTime: 1

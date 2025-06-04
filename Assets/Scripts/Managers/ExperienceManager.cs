@@ -1,3 +1,4 @@
+using EventBusEventData;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,10 +59,12 @@ public class ExperienceManager : MonoBehaviour
     void LevelUp()
     {
         // Call StatManager LevelUp
-        //playerStatManager.LevelUp(levelUpStats[level]);
+        playerStatManager.LevelUp(levelUpStats[level].LevelUpStatModifiers);
         level++;
 
         // Set nextLevelUp amount
-        nextLevelUp *= 2f;
+        nextLevelUp *= 1.5f;
+
+        EventBus.Publish(new LevelUpEvent(level));
     }
 }

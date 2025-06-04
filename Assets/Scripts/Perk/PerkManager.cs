@@ -23,18 +23,9 @@ public class PerkManager : MonoBehaviour
         }
     }
 
-    public void GainPerk(Perk perk, bool upgrade = true)
+    public void GainPerk(Perk perk)
     {
         Perk runtimePerk;
-        bool hasPerk = HasPerk(perk.perkName), 
-             hasUpgrade = perk.upgrade != null;
-        Debug.Log($"{hasPerk} : {upgrade} : {hasUpgrade}");
-        if (hasPerk && upgrade && hasUpgrade)
-        {
-            runtimePerk = GetPerkByName(perk.name);
-            runtimePerk.UpgradePerk();
-            return;
-        }
 
         runtimePerk = Instantiate(perk);
         runtimePerk.name = perk.name; // removes the added "(Clone)" suffix
@@ -46,7 +37,7 @@ public class PerkManager : MonoBehaviour
     public void RemovePerk(Perk perk) // might need to do different check since instance might not be the same as parameter perk
     {
         Perk runtimePerk = GetPerkByName(perk.name);
-        if (runtimePerk == null) { Debug.LogWarning($"Perk not found! Could not remove {perk.name} from {gameObject.name}!"); return; }
+        if (runtimePerk == null) return;
         runtimePerk.OnUnEquip(gameObject);
         perkList.Remove(runtimePerk);
     }

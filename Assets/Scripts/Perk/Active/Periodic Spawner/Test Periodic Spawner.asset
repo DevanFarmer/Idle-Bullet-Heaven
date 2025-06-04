@@ -18,7 +18,7 @@ MonoBehaviour:
   effectDescription: 
   upgrade: {fileID: 11400000, guid: ef359ae0a6c17584dab355e7e2e02d38, type: 2}
   statModifiers: []
-  spawnPrefab: {fileID: 5960760974170360659, guid: 2c83a4bb8c8922649a333d1e22f3d452, type: 3}
+  spawnPrefab: {fileID: 2270311724273591898, guid: b6c7b47fbd878504784811fae432d1d3, type: 3}
   minSpawnTime: 5
   maxSpawnTime: 10
   minSpawnRange: 5

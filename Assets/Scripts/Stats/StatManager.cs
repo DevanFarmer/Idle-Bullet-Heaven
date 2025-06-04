@@ -58,4 +58,12 @@ public class StatManager : MonoBehaviour, IStats
         }
         return -1;
     }
+
+    public void LevelUp(List<StatModifier> levelUpStats)
+    {
+        foreach (StatModifier statModifier in levelUpStats)
+        {
+            ApplyModifier(statModifier);
+        }
+    }
 }

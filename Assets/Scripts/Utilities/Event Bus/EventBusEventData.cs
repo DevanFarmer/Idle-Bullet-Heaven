@@ -97,6 +97,8 @@ namespace EventBusEventData
         }
     }
 
+    public readonly struct PerkSelectedEvent { }
+
     public readonly struct CriticalHitEvent
     {
         public readonly float Critical;

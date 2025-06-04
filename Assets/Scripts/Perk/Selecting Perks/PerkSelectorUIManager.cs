@@ -1,3 +1,4 @@
+using EventBusEventData;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class PerkSelectorUIManager : MonoBehaviour
         perkName.text = perkChoice.DisplayPerk.perkName;
         perkDescription.text = perkChoice.DisplayPerk.formattedDescription;
 
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => SelectPerk(perkChoice.BasePerk));
     }
 
@@ -43,5 +45,6 @@ public class PerkSelectorUIManager : MonoBehaviour
     {
         perkSelector.SelectPerk(perk);
         perkSelectorCanvas.SetActive(false);
+        EventBus.Publish(new PerkSelectedEvent());
     }
 }

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233861690f2258448a2032f00d701cf2, type: 3}
   m_Name: Peasant Axeman Character Stats
   m_EditorClassIdentifier: 
-  statTypes: "1.\tHealth\nBase Value: 15\n2.\tAttackPower\nBase Value: 5\n3.\tAttackSpeed\nBase
+  statTypes: "1.\tHealth\nBase Value: 5\n2.\tAttackPower\nBase Value: 5\n3.\tAttackSpeed\nBase
     Value: 1,5\n4.\tCriticalChance\nBase Value: 15\n5.\tAttackRange\nBase Value:
     1\n6.\tAttackSize\nBase Value: 0\n7.\tMoveSpeed\nBase Value: 1\n8.\tDetectionRange\nBase
     Value: 50"
   characterStats:
   - StatType: 0
-    BaseValue: 15
+    BaseValue: 5
     FlatBonusValue: 0
     PercentBonusValue: 0
   - StatType: 1
