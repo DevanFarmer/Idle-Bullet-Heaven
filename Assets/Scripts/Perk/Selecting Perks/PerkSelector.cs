@@ -118,7 +118,6 @@ public class PerkSelector : MonoBehaviour
         bool alreadyHasPrerequisite = false; // using variables for readability
         foreach (Perk p in playerPerkManager.GetPerkList())
         {
-            Debug.Log($"{p.perkName};{p.perkName.Length} : {perk.prerequisitePerk.perkName};{perk.prerequisitePerk.perkName.Length} : {p.perkName == perk.prerequisitePerk.perkName}");
             if (p.perkName == perk.prerequisitePerk.perkName)
             {
                 alreadyHasPrerequisite = true;
