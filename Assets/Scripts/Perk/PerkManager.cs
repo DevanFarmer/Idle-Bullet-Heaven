@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PerkManager : MonoBehaviour, IPerkManager
 {
-    [SerializeField] List<Perk> perkList;
+    [SerializeField] List<Perk> perkList = new();
 
     void Start()
     {
