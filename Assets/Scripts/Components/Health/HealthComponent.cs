@@ -2,7 +2,7 @@ using EventBusEventData;
 using System;
 using UnityEngine;
 
-public class HealthComponent : MonoBehaviour
+public class HealthComponent : MonoBehaviour, IHealth
 {
     [Header("Health")]
     [SerializeField] float maxHealth;
@@ -53,7 +53,7 @@ public class HealthComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public bool TakeDamage(float damage, bool hit = true)
+    public bool TakeDamage(float damage, bool hit = true) // part of IDamagable
     {
         if (HandleInvincibilityHits() && hit) return false;
 
@@ -78,7 +78,7 @@ public class HealthComponent : MonoBehaviour
         isDead = true;
     }
 
-    public void Heal(float amount)
+    public void Heal(float amount) // IHealable
     {
         if (!canHealAfterDeath && isDead) return;
         
@@ -90,7 +90,7 @@ public class HealthComponent : MonoBehaviour
         isDead = false;
     }
 
-    bool HandleInvincibilityHits()
+    bool HandleInvincibilityHits() // move to own component
     {
         if (invincibilityHits > 0)
         {
@@ -102,28 +102,30 @@ public class HealthComponent : MonoBehaviour
     }
 
     // should probably check if it the character that was hit else everything gonna update every time hit is published
+    void OnStatModified(StatType statType)
+    {
+        if (statType != StatType.Health) return;
+        UpdateMaxHealth();
+    }
+
     void OnPlayerStatModified(PlayerStatModifiedEvent e)
     {
-        if (e.statType != StatType.Health) return;
-        UpdateMaxHealth();
+        OnStatModified(e.statType);
     }
 
     void OnEnemyStatModified(EnemyStatModifiedEvent e)
     {
-        if (e.statType != StatType.Health) return;
-        UpdateMaxHealth();
+        OnStatModified(e.statType);
     }
 
     void OnMinionStatModified(MinionStatModifiedEvent e)
     {
-        if (e.statType != StatType.Health) return;
-        UpdateMaxHealth();
+        OnStatModified(e.statType);
     }
 
     void OnShieldStatModified(ShieldStatChanged e)
     {
-        if (e.statType != StatType.Health) return;
-        UpdateMaxHealth();
+        OnStatModified(e.statType);
     }
 
     // making these public is a temporary bandage fixes
@@ -156,7 +158,7 @@ public class HealthComponent : MonoBehaviour
         return !isDead;
     }
 
-    void HandleCharacterHitEvents(float damage)
+    void HandleCharacterHitEvents(float damage) // can remove since will be handle onHit by characterSpawnData; how get damage though?
     {
         switch (characterType)
         {
@@ -173,5 +175,25 @@ public class HealthComponent : MonoBehaviour
                 EventBus.Publish(new ShieldHitEvent(damage));
                 break;
         }
+    }
+
+    public void AddOnDeathAction(Action action)
+    {
+        onDeath += action;
+    }
+
+    public void RemoveOnDeathAction(Action action)
+    {
+        onDeath -= action;
+    }
+
+    public void AddOnHitAction(Action<float, Transform> action)
+    {
+        onHit += action;
+    }
+
+    public void RemoveOnHitAction(Action<float, Transform> action)
+    {
+        onHit -= action;
     }
 }
