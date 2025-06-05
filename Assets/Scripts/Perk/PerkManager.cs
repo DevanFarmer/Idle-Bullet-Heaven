@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PerkManager : MonoBehaviour
+public class PerkManager : MonoBehaviour, IPerkManager
 {
     [SerializeField] List<Perk> perkList;
 
