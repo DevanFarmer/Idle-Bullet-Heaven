@@ -20,8 +20,8 @@ public class CharacterSpawnData : BaseSpawnData
     void SetStats(GameObject spawnObject)
     {
         IStats statManager = spawnObject.GetComponent<IStats>();
-        if (statManager == null) { Debug.LogWarning($"{spawnObject.name} has no IStats component. Stats not set!"); return; }
-        // could add stat manager, but... idk i just don't want to be adding components through code, just setup prefabs properly
+        if (statManager == null) { Debug.LogWarning($"{spawnObject.name} has no IStats component. StatManager added!"); 
+            statManager = spawnObject.AddComponent<StatManager>(); }
 
         statManager.InitializeCharacterStats(characterStats);
     }
@@ -29,7 +29,8 @@ public class CharacterSpawnData : BaseSpawnData
     void SetPerks(GameObject spawnObject)
     {
         IPerkManager perkManager = spawnObject.GetComponent<IPerkManager>();
-        if (perkManager == null) { Debug.LogWarning($"{spawnObject.name} has no IPerkManager componenet. Perks not set!"); return; }
+        if (perkManager == null) { Debug.LogWarning($"{spawnObject.name} has no IPerkManager componenet. PerkManager added!"); 
+            perkManager = spawnObject.AddComponent<PerkManager>(); }
 
         foreach (Perk perk in basePerks)
         {
@@ -41,6 +42,7 @@ public class CharacterSpawnData : BaseSpawnData
     {
         // probably a better way to handle this
         IStats statManager = spawnObject.GetComponent<IStats>();
+        // in this case, why doesn't spawnObject have a stat manager?
         if (statManager == null) { Debug.LogWarning($"{spawnObject.name} has no IStats component. Health component not set!"); return; }
 
         IHealth health = spawnObject.GetComponent<IHealth>();
