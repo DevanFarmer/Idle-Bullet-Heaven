@@ -98,28 +98,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy(EnemySpawnData enemyCharacter)
     {
-        GameObject enemy = Instantiate(enemyCharacter.spawnPrefab, GetOffscreenPosition(), Quaternion.identity);
-
-        ExperienceGiver expGiver = enemy.GetComponent<ExperienceGiver>();
-        if (expGiver == null) { expGiver = enemy.AddComponent<ExperienceGiver>(); }
-        expGiver.SetExpPoints(enemyCharacter.expPoints);
-
-        IStats statManager = enemy.GetComponent<IStats>();
-        if (statManager == null) { statManager = enemy.AddComponent<StatManager>(); }
-        statManager.InitializeCharacterStats(enemyCharacter.characterStats);
-
-        HealthComponent health = enemy.GetComponent<HealthComponent>();
-        health.SetStatManager(statManager);
-        if (health == null) { Debug.Log($"No HealthComponent found on {enemy.name}. Empty HealthComponent Added!"); health = enemy.AddComponent<HealthComponent>(); }
-
-        health.onDeath += expGiver.GiveExperience;
-        health.onDeath += () => { Destroy(enemy); };
-
-        health.onHit += (damage, hitGameObject) => {
-            GameObject popup = Instantiate(damagePopup, hitGameObject.position, Quaternion.identity);
-            popup.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
-        };
-
+        enemyCharacter.Spawn(GetOffscreenPosition());
         // target component handles setting target
     }
 
