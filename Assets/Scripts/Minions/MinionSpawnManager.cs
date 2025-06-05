@@ -55,25 +55,7 @@ public class MinionSpawnManager : MonoBehaviour
         mouseScreenPosition.z = 0;
 
         // spawn prefab
-        GameObject minion = Instantiate(spawnData.minionPrefab, mouseScreenPosition, Quaternion.identity);
-
-        // set stats
-        IStats statManager = minion.GetComponent<IStats>();
-        if (statManager == null) statManager = minion.AddComponent<StatManager>();
-        statManager.InitializeCharacterStats(spawnData.stats);
-
-        // add perks
-        PerkManager perkManager = minion.GetComponent<PerkManager>();
-        foreach(Perk perk in spawnData.perks)
-        {
-            perkManager.GainPerk(perk);
-        }
-
-        // add death
-        HealthComponent health = minion.GetComponent<HealthComponent>();
-        health.SetStatManager(statManager);
-        health.onDeath += () => { Destroy(minion); };
-        health.UpdateMaxHealth();
+        GameObject minion = spawnData.Spawn(mouseScreenPosition);
 
         EventBus.Publish(new MinionSummonEvent(minion));
     }
