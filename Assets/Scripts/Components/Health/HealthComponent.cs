@@ -43,7 +43,7 @@ public class HealthComponent : MonoBehaviour, IHealth
                 break;
             case CharacterType.Minion:
                 EventBus.Subscribe<MinionStatModifiedEvent>(OnMinionStatModified);
-                onDeath += () => { EventBus.Publish(new MinionDeathEvent()); };
+                //onDeath += () => { EventBus.Publish(new MinionDeathEvent()); }; handled in MinionSpawnData
                 break;
             case CharacterType.Shield:
                 EventBus.Subscribe<ShieldStatChanged>(OnShieldStatModified);
@@ -165,9 +165,9 @@ public class HealthComponent : MonoBehaviour, IHealth
             case CharacterType.Player:
                 EventBus.Publish(new PlayerHitEvent(damage));
                 break;
-            case CharacterType.Minion:
-                EventBus.Publish(new MinionHitEvent(damage));
-                break;
+            //case CharacterType.Minion:
+            //    EventBus.Publish(new MinionHitEvent(damage));
+            //    break;
             // handled in EnemySpawnData
             //case CharacterType.Enemy:
             //    EventBus.Publish(new EnemyHitEvent(gameObject, damage));
