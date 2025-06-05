@@ -34,12 +34,12 @@ public class HealthComponent : MonoBehaviour, IHealth
         switch (characterType) 
         {
             case CharacterType.Player:
-                EventBus.Subscribe<PlayerStatModifiedEvent>(OnPlayerStatModified);
+                EventBus.Subscribe<PlayerStatModifiedEvent>(OnPlayerStatModified); // firstly, unsubscribe. secondly, find a way to do in spawndata
                 onDeath += () => { EventBus.Publish(new PlayerDeathEvent()); };
                 break;
             case CharacterType.Enemy:
                 EventBus.Subscribe<EnemyStatModifiedEvent>(OnEnemyStatModified);
-                onDeath += () => { EventBus.Publish(new EnemyDeathEvent()); };
+                //onDeath += () => { EventBus.Publish(new EnemyDeathEvent()); }; handled in EnemySpawnData
                 break;
             case CharacterType.Minion:
                 EventBus.Subscribe<MinionStatModifiedEvent>(OnMinionStatModified);
@@ -168,9 +168,10 @@ public class HealthComponent : MonoBehaviour, IHealth
             case CharacterType.Minion:
                 EventBus.Publish(new MinionHitEvent(damage));
                 break;
-            case CharacterType.Enemy:
-                EventBus.Publish(new EnemyHitEvent(gameObject, damage));
-                break;
+            // handled in EnemySpawnData
+            //case CharacterType.Enemy:
+            //    EventBus.Publish(new EnemyHitEvent(gameObject, damage));
+            //    break;
             case CharacterType.Shield:
                 EventBus.Publish(new ShieldHitEvent(damage));
                 break;
