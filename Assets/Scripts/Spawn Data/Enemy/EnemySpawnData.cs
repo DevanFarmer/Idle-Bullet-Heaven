@@ -16,10 +16,12 @@ public class EnemySpawnData : CharacterSpawnData
     {
         GameObject enemy = base.Spawn(spawnPos);
 
+        IHealth health = enemy.GetComponent<IHealth>();
+
         SetExperienceGiver(enemy);
 
-        AddOnHitActions(enemy);
-        AddOnDeathActions(enemy);
+        AddOnHitActions(enemy, health);
+        AddOnDeathActions(enemy, health);
 
         return enemy;
     }
@@ -31,19 +33,17 @@ public class EnemySpawnData : CharacterSpawnData
         expGiver.SetExpPoints(expPoints);
 
         IHealth health = enemy.GetComponent<IHealth>(); // gonna assume it is added by now
-        health.AddOnDeathAction(() => expGiver.GiveExperience());
+        health.AddOnDeathAction(() => expGiver.GiveExperience()); // do here to not have to get expGiver again
     }
 
-    protected override void AddOnHitActions(GameObject spawnObject)
+    protected override void AddOnHitActions(GameObject spawnObject, IHealth health)
     {
-        IHealth health = spawnObject.GetComponent<IHealth>();
         health.AddOnHitAction(HandleDamagePopup);
         health.AddOnHitAction(SetCharacterOnHitEvent);
     }
 
-    protected override void AddOnDeathActions(GameObject spawnObject)
+    protected override void AddOnDeathActions(GameObject spawnObject, IHealth health)
     {
-        IHealth health = spawnObject.GetComponent<IHealth>();
         health.AddOnDeathAction(() => EventBus.Publish(new EnemyDeathEvent()));
         health.AddOnDeathAction(() => Destroy(spawnObject));
     }

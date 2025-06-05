@@ -38,21 +38,24 @@ public class CharacterSpawnData : BaseSpawnData
         }
     }
 
-    protected virtual void SetHealthComponent(GameObject spawnObject)
+    // now returns IHealth(or null) for later use like for AddOnHitActions and using after overriding
+    protected virtual IHealth SetHealthComponent(GameObject spawnObject)
     {
         // probably a better way to handle this
         IStats statManager = spawnObject.GetComponent<IStats>();
         // in this case, why doesn't spawnObject have a stat manager?
-        if (statManager == null) { Debug.LogWarning($"{spawnObject.name} has no IStats component. Health component not set!"); return; }
+        if (statManager == null) { Debug.LogWarning($"{spawnObject.name} has no IStats component. Health component not set!"); return null; } // need stat manager
 
         IHealth health = spawnObject.GetComponent<IHealth>();
         health.SetStatManager(statManager);
+
+        return health;
     }
 
     // dont need to add to base spawn since they are empty
-    protected virtual void AddOnHitActions(GameObject spawnObject) { }
+    protected virtual void AddOnHitActions(GameObject spawnObject, IHealth health) { }
 
-    protected virtual void AddOnDeathActions(GameObject spawnObject) { }
+    protected virtual void AddOnDeathActions(GameObject spawnObject, IHealth health) { }
 
     protected virtual void SetCharacterOnHitEvent(float damage, Transform spawnObject) { }
 
