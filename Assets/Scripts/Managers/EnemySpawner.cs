@@ -98,7 +98,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy(EnemySpawnData enemyCharacter)
     {
-        GameObject enemy = Instantiate(enemyCharacter.prefab, GetOffscreenPosition(), Quaternion.identity);
+        GameObject enemy = Instantiate(enemyCharacter.spawnPrefab, GetOffscreenPosition(), Quaternion.identity);
 
         ExperienceGiver expGiver = enemy.GetComponent<ExperienceGiver>();
         if (expGiver == null) { expGiver = enemy.AddComponent<ExperienceGiver>(); }
@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
 
         IStats statManager = enemy.GetComponent<IStats>();
         if (statManager == null) { statManager = enemy.AddComponent<StatManager>(); }
-        statManager.InitializeCharacterStats(enemyCharacter.stats);
+        statManager.InitializeCharacterStats(enemyCharacter.characterStats);
 
         HealthComponent health = enemy.GetComponent<HealthComponent>();
         health.SetStatManager(statManager);
