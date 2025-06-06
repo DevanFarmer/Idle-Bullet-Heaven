@@ -35,7 +35,7 @@ public class HealthComponent : MonoBehaviour, IHealth
         {
             case CharacterType.Player:
                 EventBus.Subscribe<PlayerStatModifiedEvent>(OnPlayerStatModified); // firstly, unsubscribe. secondly, find a way to do in spawndata
-                onDeath += () => { EventBus.Publish(new PlayerDeathEvent()); };
+                //onDeath += () => { EventBus.Publish(new PlayerDeathEvent()); };
                 break;
             case CharacterType.Enemy:
                 EventBus.Subscribe<EnemyStatModifiedEvent>(OnEnemyStatModified);
@@ -162,9 +162,9 @@ public class HealthComponent : MonoBehaviour, IHealth
     {
         switch (characterType)
         {
-            case CharacterType.Player:
-                EventBus.Publish(new PlayerHitEvent(damage));
-                break;
+            //case CharacterType.Player:
+            //    EventBus.Publish(new PlayerHitEvent(damage));
+            //    break;
             //case CharacterType.Minion:
             //    EventBus.Publish(new MinionHitEvent(damage));
             //    break;
