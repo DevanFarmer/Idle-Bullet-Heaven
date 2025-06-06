@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     GameTimeManager gameTimeManager;
+    PlayerSpawner playerSpawner;
 
     [SerializeField] Transform playerSpawn;
     [SerializeField] GameObject playerPrefab;
@@ -48,13 +49,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        playerSpawner = GetComponent<PlayerSpawner>(); // check if null
+
         SpawnPlayer();
 
         gameTimeManager = GameTimeManager.Instance;
         gameTimeManager.StartTimer();
         // on level up event pause and start again on select perk event
-
-        InitializePerks();
     }
 
     public GameObject GetPlayer()
@@ -69,25 +70,10 @@ public class GameManager : MonoBehaviour
     // do in own player spawner script
     void SpawnPlayer()
     {
-        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
+        player = playerSpawner.SpawnPlayer(playerSpawn.position);
 
         playerStatManager = player.GetComponent<IStats>(); // Check if has, throw error if not
         playerPerkManager = player.GetComponent<PerkManager>();
-
-        InitializePlayerStats();
-    }
-
-    void InitializePlayerStats()
-    {
-        playerStatManager.InitializeCharacterStats(playerStats);
-    }
-
-    void InitializePerks()
-    {
-        foreach (Perk perk in playerPerks)
-        {
-            playerPerkManager.GainPerk(perk);
-        }
     }
 
     void OnLevelUpEvent(LevelUpEvent e) 
