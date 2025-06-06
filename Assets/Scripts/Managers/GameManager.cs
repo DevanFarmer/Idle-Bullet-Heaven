@@ -27,9 +27,6 @@ public class GameManager : MonoBehaviour
     PlayerSpawner playerSpawner;
 
     [SerializeField] Transform playerSpawn;
-    [SerializeField] GameObject playerPrefab;
-    [SerializeField] CharacterStats playerStats;
-    [SerializeField] List<Perk> playerPerks = new();
 
     private GameObject player;
     private IStats playerStatManager;
