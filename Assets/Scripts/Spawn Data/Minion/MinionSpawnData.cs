@@ -1,7 +1,7 @@
 using EventBusEventData;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New MinionSpawnData", menuName = "Minion/Spawn Data")]
+[CreateAssetMenu(fileName = "New MinionSpawnData", menuName = "Spawn Data/Minion")]
 public class MinionSpawnData : CharacterSpawnData // make a base spawn data so with name, prefab etc and us as when handling in spawning managers
 {
     public float spawnCooldown;
