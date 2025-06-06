@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
     private IStats playerStatManager;
-    private PerkManager playerPerkManager;
+    private IPerkManager playerPerkManager;
 
     private void OnEnable()
     {
@@ -67,13 +67,18 @@ public class GameManager : MonoBehaviour
     {
         return playerStatManager;
     }
-    // do in own player spawner script
+
+    public IPerkManager GetPlayerPerkManager()
+    {
+        return playerPerkManager;
+    }
+
     void SpawnPlayer()
     {
         player = playerSpawner.SpawnPlayer(playerSpawn.position);
 
         playerStatManager = player.GetComponent<IStats>(); // Check if has, throw error if not
-        playerPerkManager = player.GetComponent<PerkManager>();
+        playerPerkManager = player.GetComponent<IPerkManager>();
     }
 
     void OnLevelUpEvent(LevelUpEvent e) 
