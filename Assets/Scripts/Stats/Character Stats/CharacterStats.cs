@@ -13,6 +13,7 @@ public class CharacterStats : ScriptableObject
     public List<StatEntry> characterStats = new();
 
     // Base Stats that the script will try to always have in characterStats list
+    // can make a character type variable and change baseStatTypes depending on character type
     private static readonly HashSet<StatType> baseStatTypes = new HashSet<StatType>()
     {
         StatType.Health,
