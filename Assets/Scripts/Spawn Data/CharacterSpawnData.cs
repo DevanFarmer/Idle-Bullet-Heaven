@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CharacterSpawnData : BaseSpawnData
 {
+    public string characterName;
+    public AnimationClip animationClip;
     public CharacterStats characterStats;
     public List<Perk> basePerks = new(); // not 100% on this, good for like player but not sure when minions or enemies are going to use
 
@@ -60,4 +62,6 @@ public class CharacterSpawnData : BaseSpawnData
     protected virtual void SetCharacterOnHitEvent(float damage, Transform spawnObject) { }
 
     // for hitevents set in overridden sethealth methods
+
+    // configure animator
 }
