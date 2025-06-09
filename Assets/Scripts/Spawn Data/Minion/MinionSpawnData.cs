@@ -40,4 +40,12 @@ public class MinionSpawnData : CharacterSpawnData // make a base spawn data so w
         health.UpdateMaxHealth();
         return health;
     }
+
+    // configure:
+    // attack
+    // detection range
+    // target mask
+    // movement
+    // decay manager
+    // weapon manager
 }
