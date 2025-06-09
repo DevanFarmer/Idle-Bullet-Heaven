@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New MinionSpawnData", menuName = "Spawn Data/Minion")]
 public class MinionSpawnData : CharacterSpawnData // make a base spawn data so with name, prefab etc and us as when handling in spawning managers
 {
+    public BaseAttack attack; // list?
     public float spawnCooldown;
 
     public override GameObject Spawn(Vector3 spawnPos)
@@ -43,9 +44,9 @@ public class MinionSpawnData : CharacterSpawnData // make a base spawn data so w
 
     // configure:
     // attack
-    // detection range
-    // target mask
-    // movement
+    // detection range - confgure in character?
+    // target mask - confgure in character?
+    // movement - confgure in character?
     // decay manager
     // weapon manager
 }
