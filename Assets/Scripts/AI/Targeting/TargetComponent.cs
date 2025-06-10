@@ -54,6 +54,12 @@ public class TargetComponent : MonoBehaviour
         return validHits.ToArray();
     }
 
+    // could make interface for these setup methods
+    public void SetTargetMask(LayerMask layerMask)
+    {
+        targetMask = layerMask;
+    }
+
     public void SetDetectionRange(float range)
     {
         if (range < 0) { Debug.LogWarning($"Tried to updated detection range on {gameObject.name} but value passed was less than zero!"); return; }
