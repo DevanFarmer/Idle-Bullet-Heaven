@@ -4,7 +4,8 @@ using UnityEngine;
 public class CharacterSpawnData : BaseSpawnData
 {
     public string characterName;
-    public AnimationClip animationClip;
+    // if dont want to play animation and just display image of character have a image variable here
+    public RuntimeAnimatorController animatorController; // will change to clip when i make universal controller then set only clip in there to this clip
     public CharacterStats characterStats;
     public List<Perk> basePerks = new(); // not 100% on this, good for like player but not sure when minions or enemies are going to use
 
@@ -15,6 +16,8 @@ public class CharacterSpawnData : BaseSpawnData
         SetStats(spawnObject);
         SetPerks(spawnObject);
         SetHealthComponent(spawnObject);
+
+        SetAnimator(spawnObject);
 
         return spawnObject;
     }
@@ -62,6 +65,15 @@ public class CharacterSpawnData : BaseSpawnData
     protected virtual void SetCharacterOnHitEvent(float damage, Transform spawnObject) { }
 
     // for hitevents set in overridden sethealth methods
+
+    void SetAnimator(GameObject spawnObject)
+    {
+        // when only storing clip, the universal controller will be gotten through code and added to animator if don't have
+        Animator animator = spawnObject.GetComponent<Animator>();
+        if (animator == null) { /* got tired of sending warnings */ animator = spawnObject.AddComponent<Animator>(); }
+
+        animator.runtimeAnimatorController = animatorController; // not sure if this work ngl
+    }
 
     // configure animator
 }
