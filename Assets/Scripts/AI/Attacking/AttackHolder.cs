@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,19 +19,20 @@ public class AttackHolder : MonoBehaviour, ITargetObserver
     {
         stats = GetComponent<IStats>();
 
-        attack.Equip(transform);
-        lastAttackTime = Time.time;
+        //attack.Equip(transform);
+        //lastAttackTime = Time.time;
 
         inRange = false;
     }
 
     void Update()
     {
+        if (attack == null) return;
         if (target == null) return;
 
         CheckInRange();
 
-        if (inRange && lastAttackTime + attack.attackSpeed <= Time.time)
+        if (inRange && lastAttackTime + attack.attackSpeed <= Time.time) // calculate attackspeed with character stats
         {
             attack.Attack(transform, target, stats);
             lastAttackTime = Time.time;
@@ -58,5 +58,12 @@ public class AttackHolder : MonoBehaviour, ITargetObserver
     public void SetTarget(Transform target)
     {
         this.target = target;
+    }
+
+    public void SetAttack(BaseAttack _attack)
+    {
+        attack = _attack;
+        attack.Equip(transform);
+        lastAttackTime = Time.time;
     }
 }
