@@ -2,10 +2,9 @@ using EventBusEventData;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New MinionSpawnData", menuName = "Spawn Data/Minion")]
-public class MinionSpawnData : CharacterSpawnData // make a base spawn data so with name, prefab etc and us as when handling in spawning managers
+public class MinionSpawnData : NPCSpawnData // make a base spawn data so with name, prefab etc and us as when handling in spawning managers
 {
-    public BaseAttack attack; // list?
-    public float spawnCooldown;
+    public float baseSpawnCooldown; // should rather be a stat honestly, since can be modified, made into base cooldown instead
 
     public override GameObject Spawn(Vector3 spawnPos)
     {
@@ -42,11 +41,6 @@ public class MinionSpawnData : CharacterSpawnData // make a base spawn data so w
         return health;
     }
 
-    // configure:
-    // attack
-    // detection range - confgure in character?
-    // target mask - confgure in character?
-    // movement - confgure in character?
-    // decay manager
-    // weapon manager
+    // + decay manager - nevermind I forgot manager already handles that
+    // * weapon manager
 }
