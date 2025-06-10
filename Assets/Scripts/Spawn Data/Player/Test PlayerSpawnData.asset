@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Test PlayerSpawnData
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 5960760974170360659, guid: 2b86bf2c68acc454ebdc37151b14aa87, type: 3}
+  characterName: 
+  animatorController: {fileID: 9100000, guid: 387ff03d4fd56b34f9675116b50fed38, type: 2}
   characterStats: {fileID: 11400000, guid: cabde3f2706b65042bff9c422ac0422c, type: 2}
   basePerks: []
